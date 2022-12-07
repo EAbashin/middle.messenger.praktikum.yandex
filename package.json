@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "parcel src/pages/index.hbs --no-cache",
-    "build": "parcel build src/pages/index.hbs && ./server.js"
+    "build": "parcel build src/pages/index.hbs && node ./server.js"
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
