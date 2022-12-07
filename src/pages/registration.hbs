@@ -1,0 +1,21 @@
+{{!< base}}
+
+<div class="modal__wrapper">
+    <div class="modal__window">
+        <h2 class="modal__title">Registration</h2>
+        <form class="modal__inputs">
+            {{> input addClass="" type="email" placeholder="Email" errorText=""}}
+            {{> input addClass="" type="text" placeholder="Login" errorText=""}}
+            {{> input addClass="" type="text" placeholder="Name" errorText=""}}
+            {{> input addClass="" type="text" placeholder="Surname" errorText=""}}
+            {{> input addClass="" type="tel" placeholder="Phone" errorText=""}}
+            {{> input addClass="modal__error" type="password" placeholder="Password"}}
+            {{> input addClass="modal__error" type="password" placeholder="Password (once more)"}}
+            <span class="modal__error_text modal__general_error">Passwords mismatch</span>
+        </form>
+        <div class="modal__btns">
+            <button class="modal__btn">Create account</button>
+            <a class="modal__link" href="login.hbs">Login</a>
+        </div>
+    </div>
+</div>
