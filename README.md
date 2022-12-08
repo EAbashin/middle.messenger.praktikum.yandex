@@ -1,3 +1,25 @@
+<h2 align="center">Запуск:</h2>
+
+- запуск версии для разработчика:
+
+```bash
+npm run start
+``` 
+
+- запуск сборки проекта:
+
+```bash
+npm run build
+```
+
+`http://localhost:3000/` - URL localhost
+
+[Макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&t=7dVOjvAXzdC8zK9D-0)
+
+
+<h2 align="center">Информация</h2>
+
+
 ### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
 
 ### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main. 
