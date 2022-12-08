@@ -1,3 +1,8 @@
+<h2 align="center">Приложение на Netlify:</h2>
+
+https://glittery-chimera-e5a6f6.netlify.app/
+
+
 <h2 align="center">Запуск:</h2>
 
 - запуск версии для разработчика:
@@ -14,11 +19,11 @@ npm run build
 
 `http://localhost:3000/` - URL localhost
 
+
 [Макет](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&t=7dVOjvAXzdC8zK9D-0)
 
 
 <h2 align="center">Информация</h2>
-
 
 ### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
 
