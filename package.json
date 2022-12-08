@@ -6,8 +6,10 @@
     "node" : ">=16.14.0"
   },
   "scripts": {
-    "start": "parcel src/pages/index.hbs --no-cache",
-    "build": "parcel build src/pages/index.hbs && node ./server.js"
+    "dev": "parcel src/index.hbs --no-cache",
+    "build": "parcel build src/*.hbs --no-cache",
+    "start": "npm run build && node ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
