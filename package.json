@@ -2,23 +2,23 @@
   "name": "messager",
   "version": "sprint_1",
   "engines" : {
-    "npm" : ">=8.5.5",
-    "node" : ">=16.14.0"
+    "npm" : "8.5.5",
+    "node" : "16.14.0"
   },
   "scripts": {
     "dev": "parcel src/pages/index.hbs --no-cache",
     "build": "parcel build src/pages/index.hbs --no-cache",
-    "start": "npm run build && node ./server.js",
+    "start": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "^1.0.9",
-    "@parcel/transformer-sass": "^2.8.0",
-    "parcel": "^2.8.0",
-    "typescript": "^4.9.3"
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@parcel/transformer-sass": "2.8.0",
+    "parcel": "2.8.0",
+    "typescript": "4.9.3"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "4.18.2"
   },
   "@parcel/transformer-css": {
     "drafts": {

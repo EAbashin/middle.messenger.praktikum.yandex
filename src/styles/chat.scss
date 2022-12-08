@@ -10,15 +10,15 @@
     width: 25%;
     padding: 10px;
     height: 100vh;
-    background: #FBFBFB;
-    border-right: solid 1px #EAEAEA;
+    background: var(--bg-color-light-gray);
+    border-right: solid 1px var(--bg-color);
 
     &_profile-link {
       display: block;
       text-align: right;
       margin: 10px 10px 23px auto;
       line-height: 12px;
-      color: #999999;
+      color: var(--text-color-gray);
       text-decoration: none;
     }
 
@@ -49,7 +49,7 @@
           &_time {
             font-size: 9px;
             line-height: 13px;
-            color: #999999;
+            color: var(--text-color-gray);
           }
         }
 
@@ -60,20 +60,20 @@
           &_message {
             font-size: 12px;
             line-height: 15px;
-            color: #999999;
+            color: var(--text-color-gray);
           }
 
           &_unread {
             width: 20px;
             height: 20px;
             margin-top: auto;
-            background-color: #3369F3;
+            background-color: var(--link-color);
             border-radius: 50%;
             font-weight: 500;
             font-size: 11px;
             line-height: 20px;
             text-align: center;
-            color: #FFFFFF;
+            color: var(--btn-text-color);
           }
         }
       }
@@ -90,16 +90,16 @@
       display: block;
       width: 100%;
       height: 100%;
-      background: #EFEFEF;
+      background: var(--bg-color-input);
       border-radius: 30px;
       border: none;
       font-size: 12px;
       line-height: 12px;
-      color: #999999;
+      color: var(--text-color-gray);
       padding: 0 15px 0 30px;
 
       &:focus {
-        color: #1E1E1E;
+        color: var(--text-color-black);
       }
     }
 
@@ -128,7 +128,7 @@
       margin: auto;
       font-size: 12px;
       line-height: 12px;
-      color: #999999;
+      color: var(--text-color-gray);
     }
 
     &_header {
@@ -171,7 +171,7 @@
         width: 450px;
         height: auto;
         padding: 10px;
-        background: #F8F8F8;
+        background: var(--bg-color-message-left);
         border-radius: 12px;
         margin-bottom: 10px;
 
@@ -179,7 +179,7 @@
           font-size: 9px;
           line-height: 9px;
           text-align: right;
-          color: #999999;
+          color: var(--text-color-gray);
         }
       }
     }
@@ -221,7 +221,7 @@
   &__separator {
     width: 100%;
     height: 1px;
-    background: #EAEAEA;
+    background: var(--bg-color);
     margin: 12px auto;
   }
 
@@ -270,5 +270,5 @@
 
 .right {
   align-self: flex-end;
-  background: #E4EDFD;
+  background: var(--bg-color-message-right);
 }

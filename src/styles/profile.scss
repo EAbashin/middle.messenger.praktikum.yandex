@@ -13,7 +13,7 @@
     height: 100vh;
     left: 0px;
     top: 0px;
-    background: #FBFBFB;
+    background: var(--bg-color-light-gray);
 
     &_btn {
       display: block;
@@ -92,13 +92,13 @@
     &_descr {
       font-size: 13px;
       line-height: 13px;
-      color: #999999;
+      color: var(--text-color-gray);
       text-align: right;
       outline: none;
       border: 0;
 
       &:focus {
-        color: #1E1E1E;
+        color: var(--text-color-black);
       }
     }
   }
@@ -109,7 +109,7 @@
     &_link {
       font-size: 13px;
       line-height: 13px;
-      color: #3369F3;
+      color: var(--link-color);
       text-decoration: none;
     }
 
@@ -118,7 +118,7 @@
       margin: 0 auto;
       width: 280px;
       height: 37px;
-      background: #3369F3;
+      background: var(--bg-color);
       border-radius: 8px;
     }
   }
@@ -126,7 +126,7 @@
   &__separator {
     width: 510px;
     height: 1px;
-    background: #EAEAEA;
+    background: var(--bg-color);
     margin: 10px 0;
   }
 }

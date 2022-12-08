@@ -1,4 +1,20 @@
 :root {
+  /*My variables*/
+
+  --bg-color: #EAEAEA;
+  --bg-color-light-gray: #FBFBFB;
+  --bg-color-message-right: #E4EDFD;
+  --bg-color-message-left: #F8F8F8;
+  --bg-color-input: #EFEFEF;
+
+  --link-color: #3369F3;
+  --link-color-hover: #1A58FFFF;
+
+  --text-color-black: #1E1E1E;
+  --text-color-gray: #999999;
+
+  --btn-text-color: #FFFFFF;
+
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
