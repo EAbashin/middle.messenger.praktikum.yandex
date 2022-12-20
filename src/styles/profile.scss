@@ -1,0 +1,136 @@
+.profile {
+  &__wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+  }
+
+  &__back {
+    position: absolute;
+    display: flex;
+    width: 64px;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    background: var(--bg-color-light-gray);
+
+    &_btn {
+      display: block;
+      margin: auto;
+
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+
+  &__container {
+    width: 510px;
+    margin: 60px auto 97px auto;
+  }
+
+  &__photo-container {
+    position: relative;
+    margin: 0 auto 21px auto;
+    width: 130px;
+    height: 130px;
+    &_photo {
+      display: block;
+      text-align: center;
+      font-size: 20px;
+      line-height: 20px;
+    }
+    &_edit-photo {
+      position: absolute;
+      display: flex;
+      cursor: pointer;
+      width: 130px;
+      height: 130px;
+      background: white;
+      border-radius: 100%;
+      opacity: 0;
+      left: 0;
+      top: 0;
+      transition: all .3s;
+      &:hover {
+        opacity: .7;
+      };
+      & img {
+        position: relative;
+        display: block;
+        width: 45px;
+        height: 45px;
+        margin: auto;
+      }
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  &__info {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &_title {
+      font-size: 13px;
+      line-height: 13px;
+    }
+
+    &_descr {
+      font-size: 13px;
+      line-height: 13px;
+      color: var(--text-color-gray);
+      text-align: right;
+      outline: none;
+      border: 0;
+
+      &:focus {
+        color: var(--text-color-black);
+      }
+    }
+  }
+
+  &__links {
+    margin-bottom: 109px;
+
+    &_link {
+      font-size: 13px;
+      line-height: 13px;
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    &_btn {
+      display: block;
+      margin: 0 auto;
+      width: 280px;
+      height: 37px;
+      background: var(--link-color);
+      border-radius: 8px;
+    }
+  }
+
+  &__separator {
+    width: 510px;
+    height: 1px;
+    background: var(--bg-color);
+    margin: 10px 0;
+  }
+}
+
+.red {
+  color: red;
+}
