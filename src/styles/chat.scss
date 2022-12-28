@@ -25,6 +25,9 @@
     &_item {
       display: flex;
       cursor: pointer;
+      &:hover {
+        background-color: #f1f1f1;
+      }
 
       &_img {
         display: block;

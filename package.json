@@ -2,18 +2,19 @@
   "name": "messager",
   "version": "sprint_2",
   "engines": {
-    "npm": "8.5.5",
+    "npm": "9.2.0",
     "node": "16.14.0"
   },
   "scripts": {
     "dev": "parcel src/pages/index.hbs --no-cache",
-    "build": "parcel build src/index.html --no-cache --public-url ./",
+    "build": "parcel build src/index.html --no-cache",
     "start": "parcel src/index.html --no-cache",
     "reserve": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "alias": {
     "core": "./src/core",
+    "data": "./src/data",
     "components": "./src/components",
     "pages": "./src/pages",
     "helpers": "./src/helpers",
@@ -27,16 +28,23 @@
     "@types/node": "18.11.17",
     "parcel": "2.8.2",
     "parcel-plugin-handlebars-precompile": "1.0.2",
-    "typescript": "4.9.3"
+    "handlebars": "4.7.7",
+    "typescript": "4.9.4"
   },
   "dependencies": {
     "express": "4.18.2",
-    "handlebars": "4.7.7",
     "nanoid": "4.0.0"
   },
   "@parcel/transformer-css": {
     "drafts": {
       "nesting": true
+    }
+  },
+  "targets": {
+    "default": {
+      "engines": {
+        "browsers": ">= 50%"
+      }
     }
   }
 }

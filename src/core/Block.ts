@@ -1,6 +1,6 @@
-import EventBus from './EventBus';
-import {nanoid} from 'nanoid';
 import Handlebars from 'handlebars';
+import {nanoid} from "nanoid";
+import EventBus from "core/EventBus";
 
 interface BlockMeta<P = any> {
   props: P;

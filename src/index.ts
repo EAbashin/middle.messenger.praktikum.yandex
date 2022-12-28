@@ -4,6 +4,10 @@ import Button from './components/button';
 import Link from './components/link';
 import Input from './components/input';
 import Error from "./components/error";
+import UserItem from "./components/user-item";
+import MessageBlock from "./components/messages-block";
+import EmptyMessageBlock from "./components/empty-message-block";
+import Message from "./components/message";
 
 import RegistrationPage from "./pages/registration";
 import LoginPage from "./pages/login";
@@ -12,15 +16,27 @@ import Page404 from "./pages/page-404";
 import Page500 from "./pages/page-500";
 import ChangePasswordPage from "./pages/change-password";
 import Profile from "./pages/profile";
+import ChatEmptyPage from "./pages/chat-empty";
+import ChatPage from "./pages/chat";
 
 registerComponent(Button);
 registerComponent(Link);
 registerComponent(Input);
 registerComponent(Error);
+registerComponent(UserItem);
+registerComponent(MessageBlock);
+registerComponent(EmptyMessageBlock);
+registerComponent(Message);
 
 document.addEventListener("DOMContentLoaded", () => {
     const pathName = window.location.pathname;
     switch (true) {
+        case pathName === "/chat-empty":
+            renderDOM(new ChatEmptyPage());
+            break;
+        case pathName === "/chat":
+            renderDOM(new ChatPage());
+            break;
         case pathName === "/profile":
             renderDOM(new Profile());
             break;
@@ -43,74 +59,4 @@ document.addEventListener("DOMContentLoaded", () => {
             renderDOM(new Page500());
             break;
     }
-    // if (pathName === "/login") {
-    //     renderDOM(new FormLogin({text: "Авторизация"}));
-    // } else if (pathName === "/registration") {
-    //     renderDOM(new FormRegistration({text: "Регистрация"}));
-    // } else if (pathName === "/404") {
-    //     renderDOM(new page-404({}));
-    // } else if (pathName === "/500") {
-    //     renderDOM(new Error500({}));
-    // } else if (pathName === "/chat-empty") {
-    //     renderDOM(new ChatEmpty({
-    //         "profiles": [
-    //             {
-    //                 "name": "Вася",
-    //                 "messages": {
-    //                     text: "Lorem Ipsum is simply dummy text of the p",
-    //                     time: "12:33",
-    //                     count: 0
-    //                 }
-    //             },
-    //             {
-    //                 "name": "Петр",
-    //                 "messages": {
-    //                     text: "text message 2",
-    //                     time: "10:12",
-    //                     count: 2
-    //                 }
-    //             },
-    //             {
-    //                 "name": "Алёна",
-    //                 "messages": {
-    //                     text: "text message 3",
-    //                     time: "14:16",
-    //                     count: 0
-    //                 }
-    //             }
-    //         ]
-    //     }));
-    // } else if (pathName === "/chat-active") {
-    //     renderDOM(new ChatActive({
-    //         "profiles": [
-    //             {
-    //                 "name": "Вася",
-    //                 active: true,
-    //                 "messages": {
-    //                     text: "Lorem Ipsum is simply dummy text of the p",
-    //                     time: "12:33",
-    //                     count: 0
-    //                 }
-    //             },
-    //             {
-    //                 "name": "Петр",
-    //                 "messages": {
-    //                     text: "text message 2",
-    //                     time: "10:12",
-    //                     count: 2
-    //                 }
-    //             },
-    //             {
-    //                 "name": "Алёна",
-    //                 "messages": {
-    //                     text: "text message 3",
-    //                     time: "14:16",
-    //                     count: 0
-    //                 }
-    //             }
-    //         ]
-    //     }));
-    // } else if (pathName === "/settings") {
-    //     renderDOM(new ProfileInfo({}));
-    // }
 });
