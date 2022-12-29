@@ -1,25 +1,25 @@
-import {renderDOM, registerComponent} from './core';
+import {renderDOM, registerComponent} from 'core';
 
-import Button from './components/button';
-import Link from './components/link';
-import Input from './components/input';
-import Error from "./components/error";
-import UserItem from "./components/user-item";
-import MessageBlock from "./components/messages-block";
-import EmptyMessageBlock from "./components/empty-message-block";
-import Message from "./components/message";
+import Button from 'components/button';
+import Link from 'components/link';
+import Input from 'components/input';
+import Error from "components/error";
+import UserItem from "components/user-item";
+import MessageBlock from "components/messages-block";
+import EmptyMessageBlock from "components/empty-message-block";
+import Message from "components/message";
 
-import Registration from "./pages/registration";
-import Login from "./pages/login";
-import AddUser from "./pages/add-user";
-import Page404 from "./pages/page-404";
-import Page500 from "./pages/page-500";
-import ChangePassword from "./pages/change-password";
-import Profile from "./pages/profile";
-import ChatEmpty from "./pages/chat-empty";
-import Chat from "./pages/chat";
-import ProfileChangeDate from "./pages/profile-change-date";
-import {UploadFile} from "./pages/upload-file/upload-file";
+import Registration from "pages/registration";
+import Login from "pages/login";
+import AddUser from "pages/add-user";
+import Page404 from "pages/page-404";
+import Page500 from "pages/page-500";
+import ChangePassword from "pages/change-password";
+import Profile from "pages/profile";
+import ChatEmpty from "pages/chat-empty";
+import Chat from "pages/chat";
+import ProfileChangeDate from "pages/profile-change-date";
+import {UploadFile} from "pages/upload-file/upload-file";
 
 registerComponent(Button);
 registerComponent(Link);
