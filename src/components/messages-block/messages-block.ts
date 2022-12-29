@@ -20,12 +20,13 @@ interface MessageBlockPropsType {
 }
 
 export class MessagesBlock extends Block {
+    static componentName = "MessagesBlock";
     constructor(props: MessageBlockPropsType) {
         super({...props});
         this.setProps({
             onSubmit: () => this.onSubmit(),
             onBlur: (e: FocusEvent) => this.onBlur(e),
-            onBlur: (e: FocusEvent) => this.onBlur(e),
+            onFocus: (e: FocusEvent) => this.onFocus(e),
             messagesData,
             messageErrorText: ''
         })

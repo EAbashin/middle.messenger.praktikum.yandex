@@ -1,1 +1,1 @@
-export { LoginPage as default } from './login';
+export { UploadFile as default } from './upload-file';

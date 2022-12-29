@@ -1,6 +1,7 @@
 import Block from 'core/Block';
 
 export class EmptyMessageBlock extends Block {
+    static componentName = "EmptyMessageBlock";
     protected render(): string {
         // language=hbs
         return `

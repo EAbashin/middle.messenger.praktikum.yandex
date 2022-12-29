@@ -41,7 +41,7 @@ export function validateForm(element: HTMLInputElement) {
         }
             break;
         case (element.name === "login"): {
-            const regexp = new RegExp(/[a-zA-Z0-9-_]{3,20}]/);
+            const regexp = new RegExp(/\W/g);
             if (element.value.length < 3 || element.value.length > 20) {
                 errorMessage = "Login must be 3 to 20 characters long";
             } else if (!/[^0-9]/.test(element.value)) {

@@ -8,7 +8,7 @@ export class AddUserPage extends Block<object> {
         this.setProps({
             onSubmit: () => this.onSubmit(),
             onBlur: (e: FocusEvent) => this.onBlur(e),
-            onBlur: (e: FocusEvent) => this.onBlur(e),
+            onFocus: (e: FocusEvent) => this.onFocus(e),
             loginErrorText: '',
             generalFormError: ''
         })

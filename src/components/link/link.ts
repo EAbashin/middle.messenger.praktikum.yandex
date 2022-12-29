@@ -6,6 +6,7 @@ interface LinkProps {
 }
 
 export class Link extends Block<object> {
+  static componentName = "Link";
   constructor(props: LinkProps) {
     const onClick = () => {
       // console.log('Link clicked!');

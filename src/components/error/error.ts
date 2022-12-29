@@ -6,6 +6,7 @@ interface ErrorProps {
 }
 
 export class Error extends Block {
+    static componentName = "Error";
     constructor({errorMessage, addClass}: ErrorProps) {
         super({errorMessage, addClass});
     }

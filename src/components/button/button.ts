@@ -7,6 +7,7 @@ interface ButtonProps {
 }
 
 export class Button extends Block {
+    static componentName = "Button";
     constructor({text, addClass, onClick}: ButtonProps) {
         super({text, addClass, events: {click: onClick}});
     }
@@ -14,9 +15,7 @@ export class Button extends Block {
     protected render(): string {
         // language=hbs
         return `
-            <div class="button">
                 <button class="modal__btn {{addClass}}" type="button">{{text}}</button>
-            </div>
         `;
     }
 }

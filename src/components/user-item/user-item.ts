@@ -9,6 +9,7 @@ interface UserItemProps {
 }
 
 export class UserItem extends Block {
+    static componentName = "UserItem";
     constructor(props: UserItemProps) {
         super({...props});
     }

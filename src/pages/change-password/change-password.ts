@@ -7,7 +7,7 @@ export class ChangePasswordPage extends Block {
         this.setProps({
             onSubmit: () => this.onSubmit(),
             onBlur: (e: FocusEvent) => this.onBlur(e),
-            onBlur: (e: FocusEvent) => this.onBlur(e),
+            onFocus: (e: FocusEvent) => this.onFocus(e),
             emailErrorText: '',
             loginErrorText: '',
             nameErrorText: '',
