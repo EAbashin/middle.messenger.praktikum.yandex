@@ -1,13 +1,14 @@
 import Block from 'core/Block';
 import {validateForm} from "helpers/validateForm";
 
-export class AddUserPage extends Block {
+
+export class AddUserPage extends Block<object> {
     constructor() {
         super();
         this.setProps({
             onSubmit: () => this.onSubmit(),
             onBlur: (e: FocusEvent) => this.onBlur(e),
-            onFocus: (e: FocusEvent) => this.onFocus(e),
+            onBlur: (e: FocusEvent) => this.onBlur(e),
             loginErrorText: '',
             generalFormError: ''
         })

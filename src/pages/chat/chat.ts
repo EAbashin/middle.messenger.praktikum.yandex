@@ -1,30 +1,24 @@
 import Block from 'core/Block';
-import {usersData} from "data/usersData";
-import {messagesData} from "data/messagesData";
+import { usersData } from 'data/usersData';
 import * as search from 'assets/search.svg';
 
+export class ChatPage extends Block<object> {
+  constructor() {
+    super();
+    this.setProps({
+      usersData,
+      onInput: () => this.onInput()
+    });
+  }
 
-export class ChatPage extends Block {
-    constructor() {
-        super();
-        this.setProps({
-            usersData: usersData,
-            messagesData: messagesData,
-            onInput: (e:FocusEvent) => this.onInput(e),
-            loginErrorText: '',
-            passwordErrorText: '',
-            generalFormError: ''
-        })
-    }
+  onInput() {
+    const searchEl = this._element?.querySelector('input[name="search"]') as HTMLInputElement;
+    console.log(searchEl.value);
+  }
 
-    onInput(e: FocusEvent) {
-        const searchEl = this._element?.querySelector('input[name="search"]') as HTMLInputElement;
-        console.log(searchEl.value);
-    }
-
-    render() {
-        // language=hbs
-        return `
+  render() {
+    // language=hbs
+    return `
             <div class="chat__wrapper">
                 <div class="chat__user-list">
                     <a href="./profile" class="chat__user-list_profile-link">Profile ></a>
@@ -45,8 +39,8 @@ export class ChatPage extends Block {
                         {{/each}}
                     </div>
                 </div>
-                {{{MessageBlock messagesData=messagesData}}}
+                {{{MessagesBlock chatName="Andrey"}}}
             </div>
         `;
-    }
+  }
 }

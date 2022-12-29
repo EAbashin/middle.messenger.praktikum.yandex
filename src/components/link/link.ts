@@ -5,9 +5,9 @@ interface LinkProps {
   to: string;
 }
 
-export class Link extends Block {
+export class Link extends Block<object> {
   constructor(props: LinkProps) {
-    const onClick = (e: MouseEvent) => {
+    const onClick = () => {
       // console.log('Link clicked!');
       // e.preventDefault();
     }

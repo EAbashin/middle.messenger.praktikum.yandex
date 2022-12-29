@@ -76,6 +76,12 @@
     top: 11px;
     right: 0;
   }
+  &__error_text_bottom {
+    top: 21px;
+  }
+  &__error_text_message {
+    right: 70px;
+  }
   &__general_error {
     position: static;
     display: block;

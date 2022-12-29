@@ -1,23 +1,18 @@
 import Block from 'core/Block';
 import {usersData} from "data/usersData";
-import {messagesData} from "data/messagesData";
 import * as search from 'assets/search.svg';
 
 
-export class ChatEmptyPage extends Block {
+export class ChatEmptyPage extends Block<object> {
     constructor() {
         super();
         this.setProps({
             usersData: usersData,
-            messagesData: messagesData,
-            onInput: (e:FocusEvent) => this.onInput(e),
-            loginErrorText: '',
-            passwordErrorText: '',
-            generalFormError: ''
+            onInput: () => this.onInput(),
         })
     }
 
-    onInput(e: FocusEvent) {
+    onInput() {
         const searchEl = this._element?.querySelector('input[name="search"]') as HTMLInputElement;
         console.log(searchEl.value);
     }

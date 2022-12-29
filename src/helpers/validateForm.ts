@@ -1,8 +1,3 @@
-type ValidateFormType = {
-    value: string,
-    type: string
-}
-
 export function validateForm(element: HTMLInputElement) {
     let errorMessage = '';
 

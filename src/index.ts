@@ -9,15 +9,17 @@ import MessageBlock from "./components/messages-block";
 import EmptyMessageBlock from "./components/empty-message-block";
 import Message from "./components/message";
 
-import RegistrationPage from "./pages/registration";
-import LoginPage from "./pages/login";
-import AddUserPage from "./pages/add-user";
+import Registration from "./pages/registration";
+import Login from "./pages/login";
+import AddUser from "./pages/add-user";
 import Page404 from "./pages/page-404";
 import Page500 from "./pages/page-500";
-import ChangePasswordPage from "./pages/change-password";
+import ChangePassword from "./pages/change-password";
 import Profile from "./pages/profile";
-import ChatEmptyPage from "./pages/chat-empty";
-import ChatPage from "./pages/chat";
+import ChatEmpty from "./pages/chat-empty";
+import Chat from "./pages/chat";
+import ProfileChangeDate from "./pages/profile-change-date";
+import {UploadFile} from "./pages/upload-file/upload-file";
 
 registerComponent(Button);
 registerComponent(Link);
@@ -32,25 +34,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const pathName = window.location.pathname;
     switch (true) {
         case pathName === "/chat-empty":
-            renderDOM(new ChatEmptyPage());
+            renderDOM(new ChatEmpty());
             break;
         case pathName === "/chat":
-            renderDOM(new ChatPage());
+            renderDOM(new Chat());
+            break;
+        case pathName === "/upload-file":
+            renderDOM(new UploadFile());
             break;
         case pathName === "/profile":
             renderDOM(new Profile());
             break;
+        case pathName === "/change-data":
+            renderDOM(new ProfileChangeDate());
+            break;
         case pathName === "/login":
-            renderDOM(new LoginPage());
+            renderDOM(new Login());
             break;
         case pathName === "/registration":
-            renderDOM(new RegistrationPage());
+            renderDOM(new Registration());
             break;
         case pathName === "/change-password":
-            renderDOM(new ChangePasswordPage());
+            renderDOM(new ChangePassword());
             break;
         case pathName === "/add-user":
-            renderDOM(new AddUserPage());
+            renderDOM(new AddUser());
             break;
         case pathName === "/page-404":
             renderDOM(new Page404());

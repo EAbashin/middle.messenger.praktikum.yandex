@@ -11,7 +11,7 @@ interface InputProps {
 
 }
 
-export class Input extends Block {
+export class Input extends Block<object> {
     constructor({name, type = 'text', addClass, placeholder, onFocus, onBlur, onInput}: InputProps) {
         super({name, type, addClass, placeholder, events: {focus: onFocus, blur: onBlur, input: onInput}});
     }

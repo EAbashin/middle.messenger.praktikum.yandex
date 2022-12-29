@@ -72,6 +72,7 @@ export default class Block<P extends object = {}> {
   }
 
   componentDidMount(props: P) {
+    return;
   }
 
   _componentDidUpdate(oldProps: P, newProps: P) {
@@ -120,7 +121,7 @@ export default class Block<P extends object = {}> {
 
   protected render(): string {
     return '';
-  };
+  }
 
   getContent(): HTMLElement {
     // Хак, чтобы вызвать CDM только после добавления в DOM
