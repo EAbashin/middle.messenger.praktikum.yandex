@@ -21,33 +21,33 @@ export class Profile extends Block {
                     <h2 class="profile__name">Ivan</h2>
                     <div class="profile__info">
                         <div class="profile__options">
-                            <div class="profile__options_title">Email</div>
-                            <div class="profile__options_descr">pochta@yandex.ru</div>
+                            <h3 class="profile__options_title">Email</h3>
+                            <p class="profile__options_descr">pochta@yandex.ru</p>
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Login</div>
-                            <div class="profile__options_descr">ivanivanov</div>
+                            <h3 class="profile__options_title">Login</h3>
+                            <p class="profile__options_descr">ivanivanov</p>
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Name</div>
-                            <div class="profile__options_descr">Ivan</div>
+                            <h3 class="profile__options_title">Name</h3>
+                            <p class="profile__options_descr">Ivan</p>
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Surname</div>
-                            <div class="profile__options_descr">Ivanov</div>
+                            <h3 class="profile__options_title">Surname</h3>
+                            <p class="profile__options_descr">Ivanov</p>
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Name in chat</div>
-                            <div class="profile__options_descr">Ivan</div>
+                            <h3 class="profile__options_title">Name in chat</h3>
+                            <p class="profile__options_descr">Ivan</p>
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Phone</div>
-                            <div class="profile__options_descr">+7 (909) 967 30 30</div>
+                            <h3 class="profile__options_title">Phone</h3>
+                            <p class="profile__options_descr">+7 (909) 967 30 30</p>
                         </div>
                     </div>
                     <div class="profile__links">
