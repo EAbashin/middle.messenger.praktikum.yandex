@@ -3,6 +3,7 @@ import Handlebars, {HelperOptions} from 'handlebars';
 
 interface BlockConstructable<Props extends object> {
     componentName: string;
+
     new(props: Props): Block<object>;
 }
 
@@ -40,5 +41,6 @@ export default function registerComponent<Props extends object>(Component: Block
             const contents = fn ? fn(this) : '';
 
             return `<div data-id="${component.id}">${contents}</div>`;
-        })
+        }
+    )
 }

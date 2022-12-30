@@ -18,7 +18,7 @@ import ChangePassword from "pages/change-password";
 import Profile from "pages/profile";
 import ChatEmpty from "pages/chat-empty";
 import Chat from "pages/chat";
-import ProfileChangeDate from "pages/profile-change-date";
+import ProfileChangeDate from "pages/change-date";
 import {UploadFile} from "pages/upload-file/upload-file";
 
 registerComponent(Button);

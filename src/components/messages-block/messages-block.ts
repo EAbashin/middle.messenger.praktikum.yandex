@@ -24,7 +24,7 @@ export class MessagesBlock extends Block {
     constructor(props: MessageBlockPropsType) {
         super({...props});
         this.setProps({
-            onSubmit: () => this.onSubmit(),
+            onSubmit: (e: FocusEvent) => this.onSubmit(e),
             onBlur: (e: FocusEvent) => this.onBlur(e),
             onFocus: (e: FocusEvent) => this.onFocus(e),
             messagesData,
@@ -43,7 +43,7 @@ export class MessagesBlock extends Block {
         this.refs[`${messageEl.name}ErrorRef`].textContent = '';
     }
 
-    onSubmit() {
+    onSubmit(e: FocusEvent) {
         const
             messageEl = this._element?.querySelector('input[name="message"]') as HTMLInputElement,
             messageErrorText = validateForm(messageEl);
@@ -57,6 +57,7 @@ export class MessagesBlock extends Block {
             };
             console.log(JSON.stringify(submitObj, null, 2));
         }
+        e.preventDefault();
     }
     protected render(): string {
         // language=hbs

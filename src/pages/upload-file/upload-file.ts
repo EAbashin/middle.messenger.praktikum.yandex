@@ -26,7 +26,7 @@ export class UploadFile extends Block {
         // language=hbs
         return `
             <div class="modal__wrapper">
-                <div class="modal__window">
+                <main class="modal__window">
                     <h2 class="modal__title ">Upload file</h2>
                     <form class="modal__inputs">
                         <label class="modal__label_upload-file" for="upload-file">Select file</label>
@@ -36,7 +36,7 @@ export class UploadFile extends Block {
                             {{{Error ref="fileErrorRef" addClass="modal__error_text modal__general_error" errorMessage=errorMessage}}}
                         </div>
                     </form>
-                </div>
+                </main>
             </div>
         `;
     }

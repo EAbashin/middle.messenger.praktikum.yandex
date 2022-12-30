@@ -8,9 +8,11 @@ interface MessageProps {
 
 export class Message extends Block {
     static componentName = "Message";
+
     constructor(props: MessageProps) {
         super({...props});
     }
+
     protected render(): string {
         // language=hbs
         return `

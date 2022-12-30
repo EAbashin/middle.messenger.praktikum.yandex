@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "target": "es2017",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     "module": "commonjs",
     "rootDir": "./src",                                  /* Specify the root folder within your source files. */
@@ -15,5 +16,22 @@
     "noUnusedLocals": true,                              /* Enable error reporting when local variables aren't read. */
     "noUnusedParameters": true,                          /* Raise an error when a function parameter isn't read. */
     "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
+=======
+    "target": "es2017",
+    "module": "es2022",
+    "moduleResolution":"node",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "typeRoots": ["node_modules/@types", "typings/app.d.ts", "typings/hbs.d.ts"],
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true
+>>>>>>> sprint_2
   }
 }

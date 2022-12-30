@@ -1,23 +1,20 @@
 import Block from '../../core/Block';
 
 interface LinkProps {
-  text: string;
-  to: string;
+    onClick?: () => void;
+    text: string;
+    to: string;
 }
 
 export class Link extends Block<object> {
-  static componentName = "Link";
-  constructor(props: LinkProps) {
-    const onClick = () => {
-      // console.log('Link clicked!');
-      // e.preventDefault();
+    static componentName = "Link";
+
+    constructor({to, text, onClick}: LinkProps) {
+        super({to, text, events: {click: onClick}});
     }
 
-    super({...props, events: { click: onClick }});
-  }
-
-  render() {
-    // language=hbs
-    return `<a class="modal__link" href="{{to}}">{{text}}</a>`;
-  }
+    render() {
+        // language=hbs
+        return `<a class="modal__link" href="{{to}}">{{text}}</a>`;
+    }
 }

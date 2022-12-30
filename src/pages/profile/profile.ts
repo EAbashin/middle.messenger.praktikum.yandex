@@ -7,7 +7,7 @@ export class Profile extends Block {
     render() {
         // language=hbs
         return `
-            <div class="profile__wrapper">
+            <main class="profile__wrapper">
                 <div class="profile__back">
                     <a class="profile__back_btn" href="./chat"><img src=${back} alt="Back"></a>
                 </div>
@@ -58,7 +58,7 @@ export class Profile extends Block {
                         <a href="./" class="profile__links_link red">Exit</a>
                     </div>
                 </div>
-            </div>
+            </main>
         `;
     }
 }
