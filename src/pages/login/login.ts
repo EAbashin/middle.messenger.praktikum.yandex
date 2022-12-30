@@ -5,7 +5,7 @@ export class LoginPage extends Block {
     constructor() {
         super();
         this.setProps({
-            onSubmit: () => this.onSubmit(),
+            onSubmit: (e: FocusEvent) => this.onSubmit(e),
             onBlur: (e: FocusEvent) => this.onBlur(e),
             onFocus: (e: FocusEvent) => this.onFocus(e),
             loginErrorText: '',
@@ -26,7 +26,7 @@ export class LoginPage extends Block {
         this.refs[`${inputEl.name}ErrorRef`].textContent = '';
     }
 
-    onSubmit() {
+    onSubmit(e: FocusEvent) {
         const
             loginEl = this._element?.querySelector('input[name="login"]') as HTMLInputElement,
             passwordEl = this._element?.querySelector('input[name="password"]') as HTMLInputElement,
@@ -44,6 +44,7 @@ export class LoginPage extends Block {
             };
             console.log(JSON.stringify(submitObj, null, 2));
         }
+        e.preventDefault();
     }
 
     render() {
@@ -64,11 +65,11 @@ export class LoginPage extends Block {
                             {{{Error ref="passwordErrorRef" errorMessage=passwordErrorText}}}
                         </div>
                         {{{Error ref="generalErrorRef" addClass="modal__general_error" errorMessage=generalFormError}}}
-                    </form>
                     <div class="modal__btns">
                         {{{Button text="Enter" onClick=onSubmit}}}
                         {{{Link class="modal__link" to="/registration" text="Registration"}}}
                     </div>
+                    </form>
                 </div>
             </div>
         `;

@@ -6,7 +6,7 @@
     "node": "16.14.0"
   },
   "scripts": {
-    "dev": "parcel rc/index.html --no-cache",
+    "dev": "parcel src/index.html --no-cache",
     "build": "parcel build src/index.html --no-cache",
     "start": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"

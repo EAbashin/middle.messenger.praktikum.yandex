@@ -29,7 +29,7 @@ export function validateForm(element: HTMLInputElement) {
             }
         }
             break;
-        case (element.name === "name" || element.name === "surname" || element.name === "username"): {
+        case (element.name === "first_name" || element.name === "second_name" || element.name === "display_name"): {
             const regexp = new RegExp(/^[а-яА-ЯёЁa-zA-Z-]+$/, "g");
             if (element.value === "") {
                 errorMessage = "Field must not be empty";

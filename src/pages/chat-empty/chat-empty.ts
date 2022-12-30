@@ -20,7 +20,7 @@ export class ChatEmptyPage extends Block<object> {
     render() {
         // language=hbs
         return `
-            <div class="chat__wrapper">
+            <main class="chat__wrapper">
                 <div class="chat__user-list">
                     <a href="./profile" class="chat__user-list_profile-link">Profile ></a>
                     <form class="chat__search-form">
@@ -41,7 +41,7 @@ export class ChatEmptyPage extends Block<object> {
                     </div>
                 </div>
                 {{{EmptyMessageBlock}}}
-            </div>
+            </main>
         `;
     }
 }
