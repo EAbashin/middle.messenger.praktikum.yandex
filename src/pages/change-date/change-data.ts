@@ -80,37 +80,37 @@ export class ChangeData extends Block {
                     </div>
                     <form class="profile__info">
                         <div class="profile__options">
-                            <div class="profile__options_title">Email</div>
+                            <label class="profile__options_title">Email</label>
                             {{{Input name="email" type="email" addClass="profile__options_descr" placeholder="pochta@yandex.ru" onFocus=onFocus onBlur=onBlur }}}
                             {{{Error ref="emailErrorRef" errorMessage=emailErrorText addClass="modal__error_text_bottom"}}}
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Login</div>
+                            <label class="profile__options_title">Login</label>
                             {{{Input name="login" type="text" addClass="profile__options_descr" placeholder="ivanivanov" onFocus=onFocus onBlur=onBlur }}}
                             {{{Error ref="loginErrorRef" errorMessage=loginErrorText addClass="modal__error_text_bottom"}}}
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Name</div>
+                            <label class="profile__options_title">Name</label>
                             {{{Input name="first_name" type="text" addClass="profile__options_descr" placeholder="Ivan" onFocus=onFocus onBlur=onBlur }}}
                             {{{Error ref="first_nameErrorRef" errorMessage=first_nameErrorText addClass="modal__error_text_bottom"}}}
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Surname</div>
+                            <label class="profile__options_title">Surname</label>
                             {{{Input name="second_name" type="text" addClass="profile__options_descr" placeholder="Ivanov" onFocus=onFocus onBlur=onBlur }}}
                             {{{Error ref="second_nameErrorRef" errorMessage=second_nameErrorText addClass="modal__error_text_bottom"}}}
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Username</div>
+                            <label class="profile__options_title">Username</label>
                             {{{Input name="display_name" type="text" addClass="profile__options_descr" placeholder="Ivan" onFocus=onFocus onBlur=onBlur }}}
                             {{{Error ref="display_nameErrorRef" errorMessage=display_nameErrorText addClass="modal__error_text_bottom"}}}
                         </div>
                         <div class="profile__separator"></div>
                         <div class="profile__options">
-                            <div class="profile__options_title">Phone</div>
+                            <label class="profile__options_title">Phone</label>
                             {{{Input name="phone" type="tel" addClass="profile__options_descr" placeholder="+79991112233" onFocus=onFocus onBlur=onBlur }}}
                             {{{Error ref="phoneErrorRef" errorMessage=phoneErrorText addClass="modal__error_text_bottom"}}}
                         </div>
