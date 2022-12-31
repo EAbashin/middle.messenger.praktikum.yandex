@@ -1,28 +1,54 @@
 {
   "name": "messager",
-  "version": "sprint_1",
-  "engines" : {
-    "npm" : "8.5.5",
-    "node" : "16.14.0"
+  "version": "sprint_2",
+  "engines": {
+    "npm": "9.2.0",
+    "node": "16.14.0"
   },
   "scripts": {
-    "dev": "parcel src/pages/index.hbs --no-cache",
-    "build": "parcel build src/pages/index.hbs --no-cache",
+    "dev": "parcel src/index.html --no-cache",
+    "build": "parcel build src/index.html --no-cache",
     "start": "npm run build && node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "alias": {
+    "core": "./src/core",
+    "data": "./src/data",
+    "components": "./src/components",
+    "pages": "./src/pages",
+    "helpers": "./src/helpers",
+    "styles": "./src/styles",
+    "assets": "./src/assets"
+  },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@parcel/transformer-sass": "2.8.0",
-    "parcel": "2.8.0",
-    "typescript": "4.9.3"
+    "@parcel/transformer-inline-string": "2.8.2",
+    "@parcel/transformer-sass": "2.8.2",
+    "@types/node": "18.11.17",
+    "@typescript-eslint/eslint-plugin": "5.47.1",
+    "@typescript-eslint/parser": "5.47.1",
+    "eslint": "8.30.0",
+    "handlebars": "4.7.7",
+    "parcel": "2.8.2",
+    "parcel-plugin-handlebars-precompile": "1.0.2",
+    "stylelint": "14.16.0",
+    "stylelint-config-standard": "29.0.0",
+    "typescript": "4.9.4"
   },
   "dependencies": {
-    "express": "4.18.2"
+    "express": "4.18.2",
+    "nanoid": "4.0.0"
   },
   "@parcel/transformer-css": {
     "drafts": {
       "nesting": true
+    }
+  },
+  "targets": {
+    "default": {
+      "engines": {
+        "browsers": ">= 50%"
+      }
     }
   }
 }

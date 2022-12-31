@@ -1,7 +1,15 @@
+## Sprint_1
+
 Приложение на Netlify: https://glittery-chimera-e5a6f6.netlify.app/
 
 
 <h3 align="center">Запуск:</h3>
+
+- запуск проекта в dev-режиме:
+
+```bash
+npm run dev
+```
 
 - запуск проекта:
 
@@ -19,3 +27,16 @@ npm run build
 
 
 Макет: https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1&t=7dVOjvAXzdC8zK9D-0
+
+
+## Sprint_2
+
+
+
+1. Создана ветка sprint_2.
+2. Внедрён TypeScript.
+3. Добавлен ESLint и Stylelint.
+4. Доделана страница со списком чатов и лентой переписки.
+5. Структурирован проект в соответствии с советами по архитектуре.
+6. Сделан сбор данных из форм. В console.log выводится объект со всеми заполненными полями формы.
+7. Добавлена валидация на все формы.

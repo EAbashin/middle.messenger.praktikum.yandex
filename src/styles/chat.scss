@@ -25,6 +25,9 @@
     &_item {
       display: flex;
       cursor: pointer;
+      &:hover {
+        background-color: #f1f1f1;
+      }
 
       &_img {
         display: block;
@@ -207,7 +210,6 @@
         border: none;
         margin-left: 10px;
         position: relative;
-        background-color: white;
 
         &_img {
           position: absolute;
