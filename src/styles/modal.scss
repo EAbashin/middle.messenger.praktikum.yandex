@@ -4,22 +4,25 @@
     width: 100%;
     height: 100vh;
   }
+
   &__window {
     position: relative;
     margin: auto;
     padding: 50px 30px 30px;
     width: 340px;
     min-height: 257px;
-    background: #FFFFFF;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
+    background: #fff;
+    box-shadow: 0 0 6px rgb(0 0 0 / 14%);
     border-radius: 12px;
   }
+
   &__main-title {
     font-size: 40px;
     line-height: 40px;
     text-align: center;
     margin-bottom: 20px;
   }
+
   &__title {
     text-align: center;
     margin-bottom: 40px;
@@ -31,19 +34,23 @@
     position: relative;
     margin-bottom: 12px;
   }
+
   &__inputs {
     margin-bottom: 120px;
   }
+
   &__input {
-    outline:none;
-    border:0;
-    border-bottom:1px solid var(--link-color);
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid var(--link-color);
     width: 100%;
     height: 30px;
+
     &:invalid {
       color: red;
     }
   }
+
   &__label_upload-file {
     display: block;
     cursor: pointer;
@@ -53,6 +60,7 @@
     text-decoration-line: underline;
     color: var(--link-color);
   }
+
   &__input_upload-file {
     opacity: 0;
     position: absolute;
@@ -61,6 +69,7 @@
     height: 100%;
     cursor: pointer;
   }
+
   &__description {
     position: absolute;
     pointer-events: none;
@@ -71,6 +80,7 @@
     transition: 0.2s ease all;
     color: var(--text-color-gray);
   }
+
   &__error_text {
     position: absolute;
     font-size: 8px;
@@ -79,12 +89,15 @@
     top: 11px;
     right: 0;
   }
+
   &__error_text_bottom {
     top: 21px;
   }
+
   &__error_text_message {
     right: 70px;
   }
+
   &__general_error {
     position: static;
     display: block;
@@ -96,6 +109,7 @@
     position: absolute;
     bottom: 30px;
   }
+
   &__btn {
     width: 280px;
     height: 37px;
@@ -107,6 +121,7 @@
     color: var(--btn-text-color);
     margin-bottom: 14px;
   }
+
   &__link {
     display: block;
     font-size: 11px;
@@ -114,19 +129,24 @@
     color: var(--link-color);
     text-align: center;
     text-decoration: none;
+
     &:hover {
       color: var(--link-color-hover);
     }
+
     &:active {
       color: var(--link-color);
     }
   }
+
   &__error {
     color: red;
   }
+
   &__hide {
     display: none;
   }
+
   a {
     display: block;
   }
