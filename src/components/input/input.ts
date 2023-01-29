@@ -23,7 +23,7 @@ export class Input extends Block<object> {
     protected render(): string {
         // language=hbs
         return `
-            <input name="{{name}}" class="modal__input {{addClass}}" type="{{type}}" placeholder="{{placeholder}}" accept="{{accept}} value={{value}}">
+            <input name="{{name}}" class="modal__input {{addClass}}" type="{{type}}" placeholder="{{placeholder}}" accept="{{accept}}" value="{{value}}">
         `
     }
 }

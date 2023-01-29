@@ -13,18 +13,19 @@ type SettingsPageProps = {
     store: Store<AppState>;
     goToMessenger: (e: FocusEvent) => void;
     logout: () => void;
-    onSubmit: (e: FocusEvent) => void,
-    onBlur: (e: FocusEvent) => void,
-    onFocus: (e: FocusEvent) => void,
-    emailErrorText: string,
-    loginErrorText: string,
-    first_nameErrorText: string,
-    second_nameErrorText: string,
-    display_nameErrorText: string,
-    phoneErrorText: string,
-    formError: string | null | (() => string | null),
-    userAvatar: () => string,
-    onChangeAvatar: () => void,
+    onSubmit: (e: FocusEvent) => void;
+    onBlur: (e: FocusEvent) => void;
+    onFocus: (e: FocusEvent) => void;
+    emailErrorText: string;
+    loginErrorText: string;
+    first_nameErrorText: string;
+    second_nameErrorText: string;
+    display_nameErrorText: string;
+    phoneErrorText: string;
+    formError: string | null | (() => string | null);
+    userAvatar: () => string;
+    onChangeAvatar: () => void;
+    user?: User | null;
 };
 
 export class SettingsPage extends Block<SettingsPageProps> {
@@ -118,13 +119,12 @@ export class SettingsPage extends Block<SettingsPageProps> {
     }
 
     render() {
-        console.log('Render')
         // language=hbs
         return `
             <main class="profile__wrapper">
                 <div class="profile__container">
                     <div class="profile__photo-container">
-                        {{#if store.state.user.avatar}}
+                        {{#if this.user}}
                             <img src="${this.props.userAvatar && this.props.userAvatar()}" alt="photo" class="profile__photo-container_photo">
                         {{else}}
                             <img src=${avatar} alt="photo" class="profile__photo-container_photo">
