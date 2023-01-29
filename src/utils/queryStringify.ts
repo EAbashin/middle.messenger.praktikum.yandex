@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type StringIndexed = Record<string, any>;
 type Primitive = string | boolean | number;
 
@@ -8,8 +9,8 @@ function queryStringify(data: StringIndexed): string | never {
 
   let query = '';
   let currentIndex = 1;
-  let countKeys = Object.keys(data).length;
-  for (let key in data) {
+  const countKeys = Object.keys(data).length;
+  for (const key in data) {
     if (Array.isArray(data[key])) {
       query += stringifyArray(key, data[key]);
     }
@@ -31,16 +32,15 @@ function queryStringify(data: StringIndexed): string | never {
 }
 
 function stringifyArray(key: string, array: []): string {
-  let string: string = array.reduce((result, item, index, array) => {
-    let fullKey: string = `${key}[${index}]`;
+  // eslint-disable-next-line max-params
+  return array.reduce((result, item, index, array) => {
+    const fullKey = `${key}[${index}]`;
 
     if (Array.isArray(item)) {
       result += stringifyArray(fullKey, item);
-    }
-    else if (typeof item === 'object') {
+    } else if (typeof item === 'object') {
       result += stringifyObject(fullKey, item);
-    }
-    else {
+    } else {
       result += `${fullKey}=${item}`;
     }
 
@@ -50,16 +50,14 @@ function stringifyArray(key: string, array: []): string {
 
     return result;
   }, '');
-
-  return string;
 }
 
 function stringifyObject(key: string, object: StringIndexed): string {
-  let string: string = '';
+  let string = '';
   let currentIndex = 0;
-  let countKeys = Object.keys(object).length;
-  for (let label in object) {
-    let fullKey = `${key}[${label}]`;
+  const countKeys = Object.keys(object).length;
+  for (const label in object) {
+    const fullKey = `${key}[${label}]`;
     if (Array.isArray(object[label])) {
       string += stringifyArray(fullKey, object[label]);
     }

@@ -14,7 +14,7 @@ export enum Screens {
   Profile = 'profile',
   ChangePassword = 'ChangePassword'
 }
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const map: Record<Screens, BlockClass<any>> = {
   [Screens.Messenger]: MessengerPage,
   [Screens.SignUp]: SignUpPage,

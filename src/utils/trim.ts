@@ -3,13 +3,13 @@
  * @param inputString - входная строка
  * @param pattern - символы, требующие удаления
  */
-export function trim(inputString: string, pattern: string = ' '): string {
+export function trim(inputString: string, pattern = ' '): string {
   if (pattern === '') {
     return inputString.trim();
   }
 
-  const regex: RegExp = new RegExp(pattern, 'gi');
-  let result: string = inputString.replace(regex, '');
+  const regex = new RegExp(pattern, 'gi');
+  const result: string = inputString.replace(regex, '');
 
   return result;
 }

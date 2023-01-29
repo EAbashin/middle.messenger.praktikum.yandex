@@ -58,9 +58,6 @@ declare global {
       content: string,
     }
   };
-  export type Messages = {
-    [chatId: string]: MessageData[]
-  };
   export type MessageData = {
     chat_id: number;
     time: string;

@@ -23,20 +23,20 @@ export const diffObjectsDeep = {
       };
     }
 
-    var diff: Indexed = {};
-    for (var key in obj1) {
+    const diff: Indexed = {};
+    for (const key in obj1) {
       if (this.isFunction(obj1[key])) {
         continue;
       }
 
-      var value2 = undefined;
+      let value2 = undefined;
       if (obj2 && obj2[key] !== undefined) {
         value2 = obj2[key];
       }
 
       diff[key] = this.map(obj1[key], value2);
     }
-    for (var key in obj2) {
+    for (const key in obj2) {
       if (this.isFunction(obj2[key]) || diff[key] !== undefined) {
         continue;
       }
@@ -65,6 +65,7 @@ export const diffObjectsDeep = {
     }
     return this.VALUE_UPDATED;
   },
+  // eslint-disable-next-line @typescript-eslint/ban-types
   isFunction: function (x: unknown): x is Function {
     return Object.prototype.toString.call(x) === '[object Function]';
   },

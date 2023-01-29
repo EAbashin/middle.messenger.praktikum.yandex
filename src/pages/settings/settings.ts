@@ -32,6 +32,7 @@ export class SettingsPage extends Block<SettingsPageProps> {
     constructor(props: SettingsPageProps) {
         super(props);
         this.setProps({
+            user: this.props.store.getState().user,
             userAvatar: () => `${process.env.API_ENDPOINT}/resources${this.props.store.getState().user?.avatar}`,
             onBlur: (e: FocusEvent) => this.onBlur(e),
             onSubmit: (e: FocusEvent) => this.onSubmit(e),

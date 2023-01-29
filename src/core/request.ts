@@ -43,7 +43,7 @@ export class HTTPTransport {
     return this.request<Response>(this.endpoint + path, {method: METHODS.PATCH, data});
   }
 
-  private request<Response>(url: string, options: Options = { method: METHODS.GET }, timeout: number = 5000): Promise<Response> {
+  private request<Response>(url: string, options: Options = { method: METHODS.GET }, timeout = 5000): Promise<Response> {
     const { method, data } = options;
 
     return new Promise((resolve, reject) => {

@@ -10,7 +10,7 @@ export class PathRouter implements CoreRouter {
     if (!this.isStarted) {
       this.isStarted = true;
 
-      window.onpopstate = (_event: PopStateEvent) => {
+      window.onpopstate = () => {
         this.onRouteChange.call(this);
       };
 
