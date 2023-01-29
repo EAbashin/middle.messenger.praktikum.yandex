@@ -27,7 +27,7 @@ export class AddUserPage extends Block<object> {
 
     onSubmit(e: FocusEvent) {
         const
-            loginEl = this._element?.querySelector('input[name="login"]') as HTMLInputElement,
+            loginEl = this._element?.querySelector('input[name="sign-in"]') as HTMLInputElement,
             loginErrorText = validateForm(loginEl);
         if (loginErrorText) {
             this.setProps({
@@ -50,14 +50,14 @@ export class AddUserPage extends Block<object> {
                     <h2 class="modal__title">Add user</h2>
                     <form class="modal__inputs">
                         <div class="modal__input_wrapper">
-                            {{{Input name="login" type="text" addClass=loginAddClass onFocus=onFocus onBlur=onBlur }}}
+                            {{{Input name="sign-in" type="text" addClass=loginAddClass onFocus=onFocus onBlur=onBlur }}}
                             <span class="modal__description">Login</span>
                             {{{Error ref="loginErrorRef" errorMessage=loginErrorText}}}
                         </div>
                         {{{Error ref="generalErrorRef" addClass="modal__general_error" errorMessage=generalFormError}}}
                         <div class="modal__btns">
                             {{{Button text="Enter" onClick=onSubmit}}}
-                            {{{Link class="modal__link" to="/chat" text="Back to chat"}}}
+                            {{{Link class="modal__link" to="/messenger" text="Back to messenger"}}}
                         </div>
                     </form>
                 </main>

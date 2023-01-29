@@ -8,7 +8,7 @@ export class Page404 extends Block {
                 <main class="modal__window">
                     <h1 class="modal__main-title">404</h1>
                     <h2 class="modal__title">Went to the wrong place</h2>
-                    {{{Link class="modal__link" to="/chat" text="Back to chats"}}}
+                    {{{Link class="modal__link" to="/messenger" text="Back to chats"}}}
                 </main>
             </div>
         `;

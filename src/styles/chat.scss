@@ -20,13 +20,23 @@
       line-height: 12px;
       color: var(--text-color-gray);
       text-decoration: none;
+      width: 60px;
     }
 
     &_item {
       display: flex;
       cursor: pointer;
+      padding: 10px;
+
       &:hover {
         background-color: #f1f1f1;
+        border-radius: 8px;
+      }
+
+      &.active {
+        border-radius: 8px;
+        background-color: lightcyan;
+        border: 1px solid var(--link-color-hover);
       }
 
       &_img {
@@ -39,6 +49,7 @@
 
       &_body-wrapper {
         &_name-wrapper {
+          width: 290px;
           display: flex;
           justify-content: space-between;
           margin-bottom: 4px;
@@ -88,7 +99,11 @@
     margin: 0 auto;
     width: 100%;
     height: 32px;
-
+    display: flex;
+    &.form_to_left {
+      width: 200px;
+      margin: auto 10px auto auto;
+    }
     &_input {
       display: block;
       width: 100%;
@@ -145,6 +160,7 @@
         width: 34px;
         height: 34px;
         margin-right: 10px;
+        border-radius: 100%;
       }
 
       &_name {
@@ -270,7 +286,11 @@
   display: flex;
 }
 
-.right {
+.message_to_right {
   align-self: flex-end;
   background: var(--bg-color-message-right);
+}
+
+.hidden {
+  display: none;
 }

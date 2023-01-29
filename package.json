@@ -18,7 +18,11 @@
     "pages": "./src/pages",
     "helpers": "./src/helpers",
     "styles": "./src/styles",
-    "assets": "./src/assets"
+    "assets": "./src/assets",
+    "store": "./src/store",
+    "services": "./src/services",
+    "utils": "./src/utils",
+    "api": "./src/api"
   },
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
@@ -36,6 +40,7 @@
     "typescript": "4.9.4"
   },
   "dependencies": {
+    "babel-core": "6.26.3",
     "express": "4.18.2",
     "nanoid": "4.0.0"
   },

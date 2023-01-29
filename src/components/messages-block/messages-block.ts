@@ -8,39 +8,55 @@ import * as photoIcon from 'assets/photo-icon.png';
 import * as fileIcon from 'assets/file-icon.png';
 import * as locationIcon from 'assets/location-icon.png';
 import {validateForm} from "../../helpers/validateForm";
-import {messagesData} from "../../data/messagesData";
+import {addUserChat, sendMessage} from "../../services/chatsService";
 
-interface MessageType {
+type MessageType = {
     text: string;
     time: string;
     position: string;
 }
-interface MessageBlockPropsType {
-    messagesData?: Array<MessageType>;
+type MessageBlockPropsType = {
+    onSubmit: (e: FocusEvent) => void;
+    onBlur: (e: FocusEvent) => void;
+    onFocus: (e: FocusEvent) => void;
+    user?: UserData | null;
+    userAvatar?: () => string;
+    messageErrorText: string;
+    messages?: MessageType[];
+    activeChat?: string | number | null;
 }
 
-export class MessagesBlock extends Block {
+export class MessagesBlock extends Block<MessageBlockPropsType> {
     static componentName = "MessagesBlock";
-    constructor(props: MessageBlockPropsType) {
+    constructor({...props}: MessageBlockPropsType) {
         super({...props});
         this.setProps({
-            onSubmit: (e: FocusEvent) => this.onSubmit(e),
+            activeChat: window.store.getState().activeChat,
+            messageErrorText: '',
             onBlur: (e: FocusEvent) => this.onBlur(e),
             onFocus: (e: FocusEvent) => this.onFocus(e),
-            messagesData,
-            messageErrorText: ''
+            onSubmit: (e: FocusEvent) => this.onSubmit(e)
         })
+        if (window.store.getState().activeChat && window.store.getState().messages) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            this.setProps({messages: window.store.getState().messages[window.store.getState().activeChat]})
+        }
     }
     onBlur(e: FocusEvent) {
-        const
-            messageEl = e.target as HTMLInputElement,
-            errorMessage = validateForm(messageEl);
-        this.refs[`${messageEl.name}ErrorRef`].textContent = errorMessage;
+        const messageEl = e.target as HTMLInputElement;
+        this.refs[`${messageEl.name}ErrorRef`].textContent = validateForm(messageEl);
     }
 
     onFocus(e: FocusEvent) {
         const messageEl = e.target as HTMLInputElement;
         this.refs[`${messageEl.name}ErrorRef`].textContent = '';
+    }
+
+    async addUser() {
+        const userId: string = (document.querySelector('input[name=addProfile]') as HTMLInputElement).value ?? null;
+        const chatId = window.store.getState().activeChat;
+        window.store.dispatch(addUserChat, {chatId: chatId, userId: userId});
     }
 
     onSubmit(e: FocusEvent) {
@@ -56,6 +72,7 @@ export class MessagesBlock extends Block {
                 [messageEl.name]: messageEl.value
             };
             console.log(JSON.stringify(submitObj, null, 2));
+            window.store.dispatch(sendMessage, submitObj);
         }
         e.preventDefault();
     }
@@ -64,9 +81,22 @@ export class MessagesBlock extends Block {
         return `
             <div class="chat__messages-block">
                 <div class="chat__messages-block_header">
-                    <img src=${avatar} alt="photo" class="chat__messages-block_header_photo" alt="Photo">
-                    <div class="chat__messages-block_header_name">{{chatName}}</div>
-                    <img src=${menuProfile} alt="Menu" class="chat__messages-block_header_menu">
+                    <img src=${this.props.userAvatar && this.props.userAvatar() || avatar} alt="photo" class="chat__messages-block_header_photo" alt="Photo">
+                    <div class="chat__messages-block_header_name">{{this.user.firstName}} (id: {{this.user.id}})</div>
+                    
+                    <form class="chat__search-form form_to_left">
+                        {{{Input
+                                name="create_chat"
+                                type="text"
+                                addClass="chat__search-form_input"
+                                placeholder="Add user ..."}}}
+                        {{{Button
+                                text="+"
+                                addClass="chat__messages-block_send-message_send-btn"
+                                onClick=addUser}}}
+                    </form>
+                    
+                    <!--<img src=${menuProfile} alt="Menu" class="chat__messages-block_header_menu">
                     <div class="chat__modal-menu chat__modal-menu_header-menu ">
                         <div class="chat__modal-menu_wrapper">
                             <img src=${addIcon} alt="Add" class="chat__modal-menu_icon">
@@ -76,37 +106,48 @@ export class MessagesBlock extends Block {
                             <img src=${delIcon} alt="Del" class="chat__modal-menu_icon">
                             <div class="chat__modal-menu_text">Del user</div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
 
                 <div class="chat__separator"></div>
 
                 <div class="chat__messages-block_body">
-                    {{#each this.messagesData }}
+                    {{#each this.messages}}
                         {{{Message
-                                text=text
+                                content=content
                                 time=time
-                                position=position}}}
-                    {{/each }}
+                                from_me=from_me
+                        }}}
+                    {{/each}}
                 </div>
 
                 <div class="chat__separator"></div>
 
                 <form class="chat__messages-block_send-message">
+                    <!--
                     <label class="modal__label_upload-file" for="upload-file">
-                        <a href="/upload-file">
+                        <a>
                             <img src=${menuMessage} alt="Add file" class="chat__messages-block_send-message_menu">
                         </a>
                     </label>
+                    
                     <input class="modal__input_upload-file" type="file" name="file" id="upload-file"/>
-
-                    {{{Input name="message" type="search" placeholder="Message" addClass="chat__search-form_input" onFocus=onFocus
-                             onBlur=onBlur}}}
-                    {{{Error ref="messageErrorRef" addClass="modal__error_text_message" errorMessage=messageErrorText}}}
+                    -->
+                    {{{Input
+                            name="message"
+                            type="search"
+                            placeholder="Message"
+                            addClass="chat__search-form_input"
+                            onFocus=onFocus
+                            onBlur=onBlur
+                    }}}
+                    
+                    {{{Error
+                            ref="messageErrorRef" addClass="modal__error_text_message" errorMessage=messageErrorText}}}
                     {{{Button text="->" addClass="chat__messages-block_send-message_send-btn" onClick=onSubmit}}}
 
                     <div class="chat__modal-menu ">
-                        <div class="chat__modal-menu_wrapper">
+                            <div class="chat__modal-menu_wrapper">
                             <img class="chat__modal-menu_icon" src=${photoIcon} alt="Add photo">
                             <div class="chat__modal-menu_text">Photo and video</div>
                         </div>

@@ -6,26 +6,6 @@
     height: 100vh;
   }
 
-  &__back {
-    position: absolute;
-    display: flex;
-    width: 64px;
-    height: 100vh;
-    left: 0px;
-    top: 0px;
-    background: var(--bg-color-light-gray);
-
-    &_btn {
-      display: block;
-      margin: auto;
-
-      img {
-        width: 28px;
-        height: 28px;
-      }
-    }
-  }
-
   &__container {
     width: 510px;
     margin: 60px auto 97px auto;
@@ -41,11 +21,13 @@
       text-align: center;
       font-size: 20px;
       line-height: 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
     }
     &_edit-photo {
       position: absolute;
       display: flex;
-      cursor: pointer;
       width: 130px;
       height: 130px;
       background: white;
@@ -57,12 +39,13 @@
       &:hover {
         opacity: .7;
       };
-      & img {
+      &_img {
         position: relative;
         display: block;
         width: 45px;
         height: 45px;
         margin: auto;
+        z-index: -1;
       }
     }
   }
@@ -89,6 +72,7 @@
     &_title {
       font-size: 13px;
       line-height: 13px;
+      width: 100px;
     }
 
     &_descr {
@@ -106,6 +90,7 @@
   }
 
   &__links {
+    margin-top: 10px;
     margin-bottom: 109px;
 
     &_link {
@@ -117,7 +102,7 @@
 
     &_btn {
       display: block;
-      margin: 0 auto;
+      margin: 40px auto 14px auto;
       width: 280px;
       height: 37px;
       background: var(--link-color);
@@ -135,4 +120,10 @@
 
 .red {
   color: red;
+}
+
+.bold {
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: bold;
 }
