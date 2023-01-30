@@ -35,9 +35,11 @@ export const addUserChat: DispatchStateHandler<{ chatId: number | string, userId
   await chatsAPI.addUsersToChat(action).then(r => console.log(r)).catch(err => console.log(err));
 };
 
-export const deleteUserChat: DispatchStateHandler<{ chatId: number | string, userId: number | string }> = async (_dispatch, _state, action) => {
-  await chatsAPI.addUsersToChat(action).then(r => console.log(r)).catch(err => console.log(err));
-};
+export const deleteUserChat: DispatchStateHandler<{ chatId: number, item: HTMLElement }> = async (_dispatch, _state, action) => {
+  const { item } = action;
+  chatsAPI.deleteChat(JSON.stringify(action)).catch(err => console.log(err));
+  item.remove();
+}
 
 export const getChatUsers: DispatchStateHandler<string> = async (dispatch, _state, action) => {
   const response = await chatsAPI.getChatUsers(action).then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
