@@ -1,5 +1,6 @@
 .chat {
   position: relative;
+
   &__wrapper {
     position: relative;
     display: flex;
@@ -67,7 +68,6 @@
             line-height: 13px;
             color: var(--text-color-gray);
           }
-
         }
 
         &_message-wrapper {
