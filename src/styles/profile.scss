@@ -6,46 +6,30 @@
     height: 100vh;
   }
 
-  &__back {
-    position: absolute;
-    display: flex;
-    width: 64px;
-    height: 100vh;
-    left: 0px;
-    top: 0px;
-    background: var(--bg-color-light-gray);
-
-    &_btn {
-      display: block;
-      margin: auto;
-
-      img {
-        width: 28px;
-        height: 28px;
-      }
-    }
-  }
-
   &__container {
     width: 510px;
-    margin: 60px auto 97px auto;
+    margin: 60px auto 97px;
   }
 
   &__photo-container {
     position: relative;
-    margin: 0 auto 21px auto;
+    margin: 0 auto 21px;
     width: 130px;
     height: 130px;
+
     &_photo {
       display: block;
       text-align: center;
       font-size: 20px;
       line-height: 20px;
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
     }
+
     &_edit-photo {
       position: absolute;
       display: flex;
-      cursor: pointer;
       width: 130px;
       height: 130px;
       background: white;
@@ -53,16 +37,19 @@
       opacity: 0;
       left: 0;
       top: 0;
-      transition: all .3s;
+      transition: all 0.3s;
+
       &:hover {
-        opacity: .7;
-      };
-      & img {
+        opacity: 0.7;
+      }
+
+      &_img {
         position: relative;
         display: block;
         width: 45px;
         height: 45px;
         margin: auto;
+        z-index: -1;
       }
     }
   }
@@ -86,9 +73,11 @@
     align-items: center;
     width: 100%;
     height: 20px;
+
     &_title {
       font-size: 13px;
       line-height: 13px;
+      width: 100px;
     }
 
     &_descr {
@@ -106,6 +95,7 @@
   }
 
   &__links {
+    margin-top: 10px;
     margin-bottom: 109px;
 
     &_link {
@@ -117,7 +107,7 @@
 
     &_btn {
       display: block;
-      margin: 0 auto;
+      margin: 40px auto 14px;
       width: 280px;
       height: 37px;
       background: var(--link-color);
@@ -135,4 +125,10 @@
 
 .red {
   color: red;
+}
+
+.bold {
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: bold;
 }

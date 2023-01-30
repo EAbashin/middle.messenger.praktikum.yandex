@@ -2,8 +2,47 @@ import Block from 'core/Block';
 import * as back from 'assets/back.png';
 import * as avatar from 'assets/avatar.png';
 import * as editImage from 'assets/edit-image.png';
+import {withRouter, withStore} from "../../utils";
+import {CoreRouter, Store} from "../../core";
+import {logout} from "../../services/authService";
 
-export class Profile extends Block {
+type ProfilePageProps = {
+    router: CoreRouter;
+    store: Store<AppState>;
+    avatar: () => void;
+    onClick: () => void;
+    backToMain: () => void;
+    toPassword: () => void;
+    toData: () => void;
+};
+
+export class ProfilePage extends Block<ProfilePageProps> {
+    constructor(props: ProfilePageProps) {
+        super(props);
+        this.setProps({
+            onClick: () => this.logout(),
+            backToMain: () => this.toMain(),
+            toPassword: () => this.toPassword(),
+            toData: () => this.toData(),
+        })
+    }
+
+    logout() {
+        this.props.store.dispatch(logout);
+    }
+
+    toMain() {
+        this.props.router.go('/messenger');
+    }
+
+    toPassword() {
+        this.props.router.go('/change-password');
+    }
+
+    toData() {
+        this.props.router.go('/settings');
+    }
+
     render() {
         // language=hbs
         return `
@@ -15,7 +54,7 @@ export class Profile extends Block {
                     <div class="profile__photo-container">
                         <img src=${avatar} alt="photo" class="profile__photo-container_photo">
                         <div class="profile__photo-container_edit-photo">
-                            <img src=${editImage} alt="photo">
+                            <img class="profile__photo-container_edit-photo_img" src=${editImage} alt="photo">
                         </div>
                     </div>
                     <h2 class="profile__name">Ivan</h2>
@@ -62,3 +101,5 @@ export class Profile extends Block {
         `;
     }
 }
+
+export default withRouter(withStore(ProfilePage));

@@ -43,11 +43,11 @@ export function validateForm(element: HTMLInputElement) {
         case (element.name === "login"): {
             const regexp = new RegExp(/\W/g);
             if (element.value.length < 3 || element.value.length > 20) {
-                errorMessage = "Login must be 3 to 20 characters long";
+                errorMessage = "SignUp must be 3 to 20 characters long";
             } else if (!/[^0-9]/.test(element.value)) {
-                errorMessage = "Login cannot consist only of numbers";
+                errorMessage = "SignUp cannot consist only of numbers";
             } else if (element.value.includes(" ")) {
-                errorMessage = "Login cannot contain spaces";
+                errorMessage = "SignUp cannot contain spaces";
             }
             if (regexp.test(element.value)) {
                 errorMessage = "Unacceptable symbols";
