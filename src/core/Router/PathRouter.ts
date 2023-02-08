@@ -1,4 +1,4 @@
-import { CoreRouter } from "./CoreRouter";
+import { CoreRouter } from './CoreRouter';
 
 export class PathRouter implements CoreRouter {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -18,7 +18,7 @@ export class PathRouter implements CoreRouter {
     }
   }
 
-  private onRouteChange(pathname: string = window.location.pathname) {
+  protected onRouteChange(pathname: string = window.location.pathname) {
     const found = Object.entries(this.routes).some(([routeHash, callback]) => {
       if (routeHash === pathname) {
         callback();

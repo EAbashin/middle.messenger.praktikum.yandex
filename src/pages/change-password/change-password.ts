@@ -1,73 +1,74 @@
 import Block from 'core/Block';
-import {validateForm} from "helpers/validateForm";
+import { validateForm } from 'helpers/validateForm';
 
 export class ChangePasswordPage extends Block {
-    constructor() {
-        super();
-        this.setProps({
-            onSubmit: (e: FocusEvent) => this.onSubmit(e),
-            onBlur: (e: FocusEvent) => this.onBlur(e),
-            onFocus: (e: FocusEvent) => this.onFocus(e),
-            oldPasswordErrorText: '',
-            passwordErrorText: '',
-            generalFormError: ''
-        })
-    }
-    onBlur(e: FocusEvent) {
-        const
-            inputEl = e.target as HTMLInputElement,
-            errorMessage = validateForm(inputEl),
-            passwordEl = this._element?.querySelector('input[name="password"]') as HTMLInputElement,
-            repeat_passwordEl = this._element?.querySelector('input[name="repeat_password"]') as HTMLInputElement;
-        if (inputEl.name === 'repeat_password') {
-            passwordEl.value !== repeat_passwordEl.value
-                ? this.refs.generalErrorRef.textContent = 'Passwords mismatch'
-                : this.refs.generalErrorRef.textContent = ''
-        } else {
-            this.refs[`${inputEl.name}ErrorRef`].textContent = errorMessage;
-        }
-    }
+  constructor() {
+    super();
+    this.setProps({
+      onSubmit: (e: FocusEvent) => this.onSubmit(e),
+      onBlur: (e: FocusEvent) => this.onBlur(e),
+      onFocus: (e: FocusEvent) => this.onFocus(e),
+      oldPasswordErrorText: '',
+      passwordErrorText: '',
+      generalFormError: '',
+    });
+  }
 
-    onFocus(e: FocusEvent) {
-        const inputEl = e.target as HTMLInputElement;
-        if (inputEl.name === 'repeat_password' || inputEl.name === 'password') {
-            this.refs.generalErrorRef.textContent = '';
-        }
-        if (inputEl.name !== 'repeat_password') {
-            this.refs[`${inputEl.name}ErrorRef`].textContent = '';
-        }
+  onBlur(e: FocusEvent) {
+    const
+      inputEl = e.target as HTMLInputElement;
+    const errorMessage = validateForm(inputEl);
+    const passwordEl = this._element?.querySelector('input[name="password"]') as HTMLInputElement;
+    const repeat_passwordEl = this._element?.querySelector('input[name="repeat_password"]') as HTMLInputElement;
+    if (inputEl.name === 'repeat_password') {
+      passwordEl.value !== repeat_passwordEl.value
+        ? this.refs.generalErrorRef.textContent = 'Passwords mismatch'
+        : this.refs.generalErrorRef.textContent = '';
+    } else {
+      this.refs[`${inputEl.name}ErrorRef`].textContent = <string>errorMessage;
     }
+  }
 
-    onSubmit(e: FocusEvent) {
-        const
+  onFocus(e: FocusEvent) {
+    const inputEl = e.target as HTMLInputElement;
+    if (inputEl.name === 'repeat_password' || inputEl.name === 'password') {
+      this.refs.generalErrorRef.textContent = '';
+    }
+    if (inputEl.name !== 'repeat_password') {
+      this.refs[`${inputEl.name}ErrorRef`].textContent = '';
+    }
+  }
 
-            oldPasswordEl = this._element?.querySelector('input[name="old_password"]') as HTMLInputElement,
-            passwordEl = this._element?.querySelector('input[name="password"]') as HTMLInputElement,
-            repeat_passwordEl = this._element?.querySelector('input[name="repeat_password"]') as HTMLInputElement;
-        const
-            oldPasswordErrorText = validateForm(oldPasswordEl),
-            passwordErrorText = validateForm(passwordEl),
-            generalFormError = passwordEl.value !== repeat_passwordEl.value ? 'Passwords mismatch' : '';
-        if (oldPasswordErrorText
+  onSubmit(e: FocusEvent) {
+    const
+
+      oldPasswordEl = this._element?.querySelector('input[name="old_password"]') as HTMLInputElement;
+    const passwordEl = this._element?.querySelector('input[name="password"]') as HTMLInputElement;
+    const repeat_passwordEl = this._element?.querySelector('input[name="repeat_password"]') as HTMLInputElement;
+    const
+      oldPasswordErrorText = validateForm(oldPasswordEl);
+    const passwordErrorText = validateForm(passwordEl);
+    const generalFormError = passwordEl.value !== repeat_passwordEl.value ? 'Passwords mismatch' : '';
+    if (oldPasswordErrorText
             || passwordErrorText
             || generalFormError) {
-            this.setProps({
-                oldPasswordErrorText,
-                passwordErrorText,
-                generalFormError
-            })
-        } else {
-            const submitObj = {
-                [passwordEl.name]: passwordEl.value
-            };
-            console.log(JSON.stringify(submitObj, null, 2));
-        }
-        e.preventDefault();
+      this.setProps({
+        oldPasswordErrorText,
+        passwordErrorText,
+        generalFormError,
+      });
+    } else {
+      const submitObj = {
+        [passwordEl.name]: passwordEl.value,
+      };
+      console.log(JSON.stringify(submitObj, null, 2));
     }
+    e.preventDefault();
+  }
 
-    render() {
-        // language=hbs
-        return `
+  render() {
+    // language=hbs
+    return `
             <div class="modal__wrapper">
                 <main class="modal__window">
                     <h2 class="modal__title">Change password</h2>
@@ -95,5 +96,5 @@ export class ChangePasswordPage extends Block {
                 </main>
             </div>
         `;
-    }
+  }
 }

@@ -7,78 +7,76 @@ import * as menuMessage from 'assets/menu-message.svg';
 import * as photoIcon from 'assets/photo-icon.png';
 import * as fileIcon from 'assets/file-icon.png';
 import * as locationIcon from 'assets/location-icon.png';
-import {validateForm} from "../../helpers/validateForm";
-import {addUserChat, sendMessage} from "../../services/chatsService";
+import { validateForm } from '../../helpers/validateForm';
+import { sendMessage } from '../../services/chatsService';
 
 type MessageType = {
-    text: string;
-    time: string;
-    position: string;
-}
+  text: string;
+  time: string;
+  position: string;
+};
 type MessageBlockPropsType = {
-    onSubmit: (e: FocusEvent) => void;
-    onBlur: (e: FocusEvent) => void;
-    onFocus: (e: FocusEvent) => void;
-    user?: UserData | null;
-    userAvatar?: () => string;
-    messageErrorText: string;
-    messages?: MessageType[];
-    activeChat?: string | number | null;
-}
+  onSubmit: (e: FocusEvent) => void;
+  onBlur: (e: FocusEvent) => void;
+  onFocus: (e: FocusEvent) => void;
+  user?: UserData | null;
+  userAvatar?: () => string;
+  messageErrorText: string;
+  messages?: MessageType[];
+  activeChat?: string | number | null;
+};
 
 export class MessagesBlock extends Block<MessageBlockPropsType> {
-    static componentName = "MessagesBlock";
-    constructor({...props}: MessageBlockPropsType) {
-        super({...props});
-        this.setProps({
-            activeChat: window.store.getState().activeChat,
-            messageErrorText: '',
-            onBlur: (e: FocusEvent) => this.onBlur(e),
-            onFocus: (e: FocusEvent) => this.onFocus(e),
-            onSubmit: (e: FocusEvent) => this.onSubmit(e)
-        })
-        if (window.store.getState().activeChat && window.store.getState().messages) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            this.setProps({messages: window.store.getState().messages[window.store.getState().activeChat]})
-        }
-    }
-    onBlur(e: FocusEvent) {
-        const messageEl = e.target as HTMLInputElement;
-        this.refs[`${messageEl.name}ErrorRef`].textContent = validateForm(messageEl);
-    }
+  static componentName = 'MessagesBlock';
 
-    onFocus(e: FocusEvent) {
-        const messageEl = e.target as HTMLInputElement;
-        this.refs[`${messageEl.name}ErrorRef`].textContent = '';
+  constructor({ ...props }: MessageBlockPropsType) {
+    super({ ...props });
+    this.setProps({
+      activeChat: window.store.getState().activeChat,
+      messageErrorText: '',
+      onBlur: (e: FocusEvent) => this.onBlur(e),
+      onFocus: (e: FocusEvent) => this.onFocus(e),
+      onSubmit: (e: FocusEvent) => this.onSubmit(e),
+    });
+    if (window.store.getState().activeChat && window.store.getState().messages) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      this.setProps({ messages: window.store.getState().messages[window.store.getState().activeChat] });
     }
+  }
 
-    async addUser() {
-        const userId: string = (document.querySelector('input[name=addProfile]') as HTMLInputElement).value ?? null;
-        const chatId = window.store.getState().activeChat;
-        window.store.dispatch(addUserChat, {chatId: chatId, userId: userId});
-    }
+  onBlur(e: FocusEvent) {
+    const messageEl = e.target as HTMLInputElement;
+    // @ts-ignore
+    this.refs[`${messageEl.name}ErrorRef`].textContent = validateForm(messageEl);
+  }
 
-    onSubmit(e: FocusEvent) {
-        const
-            messageEl = this._element?.querySelector('input[name="message"]') as HTMLInputElement,
-            messageErrorText = validateForm(messageEl);
-        if (messageErrorText) {
-            this.setProps({
-                messageErrorText
-            })
-        } else {
-            const submitObj = {
-                [messageEl.name]: messageEl.value
-            };
-            console.log(JSON.stringify(submitObj, null, 2));
-            window.store.dispatch(sendMessage, submitObj);
-        }
-        e.preventDefault();
+  onFocus(e: FocusEvent) {
+    const messageEl = e.target as HTMLInputElement;
+    this.refs[`${messageEl.name}ErrorRef`].textContent = '';
+  }
+
+  onSubmit(e: FocusEvent) {
+    const
+      messageEl = this._element?.querySelector('input[name="message"]') as HTMLInputElement;
+    const messageErrorText = validateForm(messageEl);
+    if (messageErrorText) {
+      this.setProps({
+        messageErrorText,
+      });
+    } else {
+      const submitObj = {
+        [messageEl.name]: messageEl.value,
+      };
+      console.log(JSON.stringify(submitObj, null, 2));
+      window.store.dispatch(sendMessage, submitObj);
     }
-    protected render(): string {
-        // language=hbs
-        return `
+    e.preventDefault();
+  }
+
+  protected render(): string {
+    // language=hbs
+    return `
             <div class="chat__messages-block">
                 <div class="chat__messages-block_header">
                     <img src=${this.props.userAvatar && this.props.userAvatar() || avatar} alt="photo" class="chat__messages-block_header_photo" alt="Photo">
@@ -163,5 +161,5 @@ export class MessagesBlock extends Block<MessageBlockPropsType> {
                 </form>
             </div>
         `;
-    }
+  }
 }

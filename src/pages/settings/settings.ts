@@ -1,127 +1,127 @@
 import Block from 'core/Block';
 import * as avatar from 'assets/avatar.png';
 import * as editImage from 'assets/edit-image.png';
-import {validateForm} from "../../helpers/validateForm";
-import {CoreRouter, Store} from "../../core";
-import {withRouter, withStore} from "../../utils";
-import {logout} from "../../services/authService";
-import {changeAvatar} from "../../services/resourcesService";
-import {changeUserProfile} from "../../services/usersService";
+import { validateForm } from '../../helpers/validateForm';
+import { CoreRouter, Store } from '../../core';
+import { withRouter, withStore } from '../../utils';
+import { logout } from '../../services/authService';
+import { changeAvatar } from '../../services/resourcesService';
+import { changeUserProfile } from '../../services/usersService';
 
 type SettingsPageProps = {
-    router: CoreRouter;
-    store: Store<AppState>;
-    goToMessenger: (e: FocusEvent) => void;
-    logout: () => void;
-    onSubmit: (e: FocusEvent) => void;
-    onBlur: (e: FocusEvent) => void;
-    onFocus: (e: FocusEvent) => void;
-    emailErrorText: string;
-    loginErrorText: string;
-    first_nameErrorText: string;
-    second_nameErrorText: string;
-    display_nameErrorText: string;
-    phoneErrorText: string;
-    formError: string | null | (() => string | null);
-    userAvatar: () => string;
-    onChangeAvatar: () => void;
-    user?: User | null;
+  router: CoreRouter;
+  store: Store<AppState>;
+  goToMessenger: (e: FocusEvent) => void;
+  logout: () => void;
+  onSubmit: (e: FocusEvent) => void;
+  onBlur: (e: FocusEvent) => void;
+  onFocus: (e: FocusEvent) => void;
+  emailErrorText: string;
+  loginErrorText: string;
+  first_nameErrorText: string;
+  second_nameErrorText: string;
+  display_nameErrorText: string;
+  phoneErrorText: string;
+  formError: string | null | (() => string | null);
+  userAvatar: () => string;
+  onChangeAvatar: () => void;
+  user?: User | null;
 };
 
 export class SettingsPage extends Block<SettingsPageProps> {
-    constructor(props: SettingsPageProps) {
-        super(props);
-        this.setProps({
-            user: this.props.store.getState().user,
-            userAvatar: () => `${process.env.API_ENDPOINT}/resources${this.props.store.getState().user?.avatar}`,
-            onBlur: (e: FocusEvent) => this.onBlur(e),
-            onSubmit: (e: FocusEvent) => this.onSubmit(e),
-            onFocus: (e: FocusEvent) => this.onFocus(e),
-            goToMessenger: (e: FocusEvent) => this.goToMessenger(e),
-            logout: () => this.logout(),
-            onChangeAvatar: () => this.onChangeAvatar(),
-            loginErrorText: '',
-            emailErrorText: '',
-            first_nameErrorText: '',
-            second_nameErrorText: '',
-            display_nameErrorText: '',
-            phoneErrorText: '',
-            formError: () => this.props.store.getState().formError
-        })
-    }
+  constructor(props: SettingsPageProps) {
+    super(props);
+    this.setProps({
+      user: this.props.store.getState().user,
+      userAvatar: () => `${process.env.API_ENDPOINT}/resources${this.props.store.getState().user?.avatar}`,
+      onBlur: (e: FocusEvent) => this.onBlur(e),
+      onSubmit: (e: FocusEvent) => this.onSubmit(e),
+      onFocus: (e: FocusEvent) => this.onFocus(e),
+      goToMessenger: (e: FocusEvent) => this.goToMessenger(e),
+      logout: () => this.logout(),
+      onChangeAvatar: () => this.onChangeAvatar(),
+      loginErrorText: '',
+      emailErrorText: '',
+      first_nameErrorText: '',
+      second_nameErrorText: '',
+      display_nameErrorText: '',
+      phoneErrorText: '',
+      formError: () => this.props.store.getState().formError,
+    });
+  }
 
-    onChangeAvatar() {
-        const avatarField = document.querySelector(`[name=avatar]`) as HTMLInputElement;
-        if (avatarField && avatarField.files) {
-            const formData = new FormData();
-            formData.append('avatar', avatarField.files[0]);
-            window.store.dispatch(changeAvatar, formData);
-        }
+  onChangeAvatar() {
+    const avatarField = document.querySelector('[name=avatar]') as HTMLInputElement;
+    if (avatarField && avatarField.files) {
+      const formData = new FormData();
+      formData.append('avatar', avatarField.files[0]);
+      window.store.dispatch(changeAvatar, formData);
     }
+  }
 
-    goToMessenger(e: FocusEvent) {
-        e.preventDefault();
-        this.props.router.go('/messenger');
+  goToMessenger(e: FocusEvent) {
+    e.preventDefault();
+    this.props.router.go('/messenger');
+  }
+
+  logout() {
+    this.props.store.dispatch(logout);
+  }
+
+  onBlur(e: FocusEvent) {
+    const
+      inputEl = e.target as HTMLInputElement;
+    this.refs[`${inputEl.name}ErrorRef`].textContent = <string>validateForm(inputEl);
+  }
+
+  onFocus(e: FocusEvent) {
+    const inputEl = e.target as HTMLInputElement;
+    this.refs[`${inputEl.name}ErrorRef`].textContent = '';
+  }
+
+  onSubmit(e: FocusEvent) {
+    const
+      emailEl = this._element?.querySelector('input[name="email"]') as HTMLInputElement;
+    const loginEl = this._element?.querySelector('input[name="login"]') as HTMLInputElement;
+    const first_nameEl = this._element?.querySelector('input[name="first_name"]') as HTMLInputElement;
+    const second_nameEl = this._element?.querySelector('input[name="second_name"]') as HTMLInputElement;
+    const display_nameEl = this._element?.querySelector('input[name="display_name"]') as HTMLInputElement;
+    const phoneEl = this._element?.querySelector('input[name="phone"]') as HTMLInputElement;
+    const emailErrorText = validateForm(emailEl);
+    const loginErrorText = validateForm(loginEl);
+    const first_nameErrorText = validateForm(first_nameEl);
+    const second_nameErrorText = validateForm(second_nameEl);
+    const display_nameErrorText = validateForm(display_nameEl);
+    const phoneErrorText = validateForm(phoneEl);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (emailErrorText || loginErrorText || first_nameErrorText || second_nameErrorText || display_nameErrorText || phoneErrorText || this.props.formError()) {
+      this.setProps({
+        emailErrorText,
+        loginErrorText,
+        first_nameErrorText,
+        second_nameErrorText,
+        display_nameErrorText,
+        phoneErrorText,
+      });
+    } else {
+      const submitObj = {
+        [emailEl.name]: emailEl.value,
+        [loginEl.name]: loginEl.value,
+        [first_nameEl.name]: first_nameEl.value,
+        [second_nameEl.name]: second_nameEl.value,
+        [display_nameEl.name]: display_nameEl.value,
+        [phoneEl.name]: phoneEl.value,
+      };
+      console.log(JSON.stringify(submitObj, null, 2));
+      this.props.store.dispatch(changeUserProfile, submitObj);
     }
+    e.preventDefault();
+  }
 
-    logout() {
-        this.props.store.dispatch(logout);
-    }
-
-    onBlur(e: FocusEvent) {
-        const
-            inputEl = e.target as HTMLInputElement;
-        this.refs[`${inputEl.name}ErrorRef`].textContent = validateForm(inputEl);
-    }
-
-    onFocus(e: FocusEvent) {
-        const inputEl = e.target as HTMLInputElement;
-        this.refs[`${inputEl.name}ErrorRef`].textContent = '';
-    }
-
-    onSubmit(e: FocusEvent) {
-        const
-            emailEl = this._element?.querySelector('input[name="email"]') as HTMLInputElement,
-            loginEl = this._element?.querySelector('input[name="login"]') as HTMLInputElement,
-            first_nameEl = this._element?.querySelector('input[name="first_name"]') as HTMLInputElement,
-            second_nameEl = this._element?.querySelector('input[name="second_name"]') as HTMLInputElement,
-            display_nameEl = this._element?.querySelector('input[name="display_name"]') as HTMLInputElement,
-            phoneEl = this._element?.querySelector('input[name="phone"]') as HTMLInputElement,
-            emailErrorText = validateForm(emailEl),
-            loginErrorText = validateForm(loginEl),
-            first_nameErrorText = validateForm(first_nameEl),
-            second_nameErrorText = validateForm(second_nameEl),
-            display_nameErrorText = validateForm(display_nameEl),
-            phoneErrorText = validateForm(phoneEl);
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        if (emailErrorText || loginErrorText || first_nameErrorText || second_nameErrorText || display_nameErrorText || phoneErrorText || this.props.formError()) {
-            this.setProps({
-                emailErrorText,
-                loginErrorText,
-                first_nameErrorText,
-                second_nameErrorText,
-                display_nameErrorText,
-                phoneErrorText
-            })
-        } else {
-            const submitObj = {
-                [emailEl.name]: emailEl.value,
-                [loginEl.name]: loginEl.value,
-                [first_nameEl.name]: first_nameEl.value,
-                [second_nameEl.name]: second_nameEl.value,
-                [display_nameEl.name]: display_nameEl.value,
-                [phoneEl.name]: phoneEl.value,
-            };
-            console.log(JSON.stringify(submitObj, null, 2));
-            this.props.store.dispatch(changeUserProfile, submitObj);
-        }
-        e.preventDefault();
-    }
-
-    render() {
-        // language=hbs
-        return `
+  render() {
+    // language=hbs
+    return `
             <main class="profile__wrapper">
                 <div class="profile__container">
                     <div class="profile__photo-container">
@@ -203,7 +203,7 @@ export class SettingsPage extends Block<SettingsPageProps> {
                 </div>
             </main>
         `;
-    }
+  }
 }
 
 export default withRouter(withStore(SettingsPage));

@@ -1,12 +1,19 @@
 {
-  "extends": "stylelint-config-standard-scss",
-  "ignoreFiles": [
-    "dist/*",
-    "node_modules/*",
-    "**/*.ts",
-    "**/*.hbs"
-  ],
-  "rules": {
-    "selector-class-pattern": null
-  }
+	"extends": [
+		"stylelint-config-standard"
+	],
+	"ignoreFiles": ["dist/**/*.css"],
+	"rules": {
+		"selector-class-pattern": null,
+		"function-url-quotes": null,
+		"value-no-vendor-prefix": null,
+		"property-no-vendor-prefix": null,
+		"font-family-name-quotes": null,
+		"string-quotes": null,
+		"selector-pseudo-element-no-unknown": null,
+		"selector-pseudo-class-no-unknown": null,
+		"font-family-no-missing-generic-family-keyword": null,
+		"no-duplicate-selectors": null,
+		"import-notation": null
+	}
 }

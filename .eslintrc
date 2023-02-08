@@ -1,28 +1,53 @@
 {
-  "root": true,
-  "env": {
-    "browser": true,
-    "es2017": true
-  },
   "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb-base",
+    "airbnb-typescript/base"
   ],
-  "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": 2018,
     "sourceType": "module",
-    "ecmaVersion": 2020
+    "project": "./tsconfig.json"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
   "rules": {
+    "no-mixed-operators": "off",
+    "prefer-regex-literals": "off",
+    "no-restricted-exports": "off",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "import/no-cycle": "off",
+    "import/prefer-default-export": "off",
     "no-console": "off",
-    "quotes": 0,
-    "max-params": [2, 3],
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "warn"
+    "no-underscore-dangle": "off",
+    "no-param-reassign":"off",
+    "class-methods-use-this":"off",
+    "arrow-parens":"off",
+    "no-return-assign":"off",
+    "no-restricted-syntax":"off",
+    "no-new":"off",
+    "prefer-destructuring":"off",
+    "no-continue":"off",
+    "array-callback-return":"off",
+    "no-unused-vars": "off",
+    "no-useless-return": "off",
+    "@typescript-eslint/no-useless-constructor": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "no-restricted-globals": "off",
+    "no-useless-escape":"off",
+    "max-len":"off",
+    "no-extra-boolean-cast": "off",
+    "no-alert": "off",
+    "global-require": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   }
 }

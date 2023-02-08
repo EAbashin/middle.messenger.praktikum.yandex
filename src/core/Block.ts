@@ -1,6 +1,6 @@
-import EventBus from './EventBus';
-import { nanoid } from 'nanoid';
+import { v4 as uuidv4 } from 'uuid';
 import Handlebars from 'handlebars';
+import EventBus from './EventBus';
 
 type Events = Values<typeof Block.EVENTS>;
 
@@ -18,15 +18,18 @@ export default class Block<P extends object = {}> {
     FLOW_RENDER: 'flow:render',
   } as const;
 
-  public id = nanoid(6);
+  public id = uuidv4();
 
   protected _element: Nullable<HTMLElement> = null;
+
   protected readonly props: P;
+
   protected children: { [id: string]: Block } = {};
 
   eventBus: () => EventBus<Events>;
 
   protected state: any = {};
+
   protected refs: { [key: string]: HTMLElement } = {};
 
   public static componentName?: string;
@@ -107,6 +110,10 @@ export default class Block<P extends object = {}> {
 
   componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
+  }
+
+  getProps() {
+    return this.props;
   }
 
   setProps = (nextProps: Partial<P>) => {

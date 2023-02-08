@@ -1,9 +1,9 @@
 import Block from 'core/Block';
 
 export class Page500 extends Block {
-    render() {
-        // language=hbs
-        return `
+  render() {
+    // language=hbs
+    return `
             <div class="modal__wrapper">
                 <main class="modal__window">
                     <h1 class="modal__main-title">500</h1>
@@ -12,5 +12,5 @@ export class Page500 extends Block {
                 </main>
             </div>
         `;
-    }
+  }
 }

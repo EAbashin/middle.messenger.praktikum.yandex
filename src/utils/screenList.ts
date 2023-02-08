@@ -1,10 +1,10 @@
 import { BlockClass } from 'core';
 import MessengerPage from 'pages/messenger';
-import SettingsPage from "pages/settings";
-import SignUpPage from "pages/sign-up";
-import SignInPage from "pages/sign-in";
-import ProfilePage from "../pages/profile";
-import ChangePasswordPage from "../pages/change-password";
+import SettingsPage from 'pages/settings';
+import SignUpPage from 'pages/sign-up';
+import SignInPage from 'pages/sign-in';
+import ProfilePage from '../pages/profile';
+import ChangePasswordPage from '../pages/change-password';
 
 export enum Screens {
   Messenger = 'messenger',
@@ -12,7 +12,7 @@ export enum Screens {
   SignIn = 'sign-in',
   Settings = 'settings',
   Profile = 'profile',
-  ChangePassword = 'ChangePassword'
+  ChangePassword = 'ChangePassword',
 }
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const map: Record<Screens, BlockClass<any>> = {
@@ -24,6 +24,4 @@ const map: Record<Screens, BlockClass<any>> = {
   [Screens.ChangePassword]: ChangePasswordPage,
 };
 
-export const getScreenComponent = (screen: Screens): BlockClass<object> => {
-  return map[screen];
-};
+export const getScreenComponent = (screen: Screens): BlockClass<object> => map[screen];

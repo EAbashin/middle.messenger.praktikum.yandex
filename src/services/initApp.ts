@@ -1,10 +1,9 @@
 import type { Dispatch } from 'core';
 import { transformUser, apiHasError } from 'utils';
-import {authAPI} from "../api/authAPI";
-import {chatsAPI} from "../api/chatsAPI";
+import { authAPI } from '../api/authAPI';
+import { chatsAPI } from '../api/chatsAPI';
 
 export async function initApp(dispatch: Dispatch<AppState>) {
-
   try {
     const user = await authAPI.getUserInfo().then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(user)) {
@@ -17,10 +16,10 @@ export async function initApp(dispatch: Dispatch<AppState>) {
       return JSON.parse(r.responseText);
     }).catch(err => console.log(err));
 
-    dispatch({user: transformUser(user as UserData), chats});
+    dispatch({ user: transformUser(user as UserData), chats });
   } catch (err) {
     console.error(err);
   } finally {
-    dispatch({appIsInited: true});
+    dispatch({ appIsInited: true });
   }
 }

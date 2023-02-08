@@ -1,4 +1,4 @@
-import {Screens} from "../src/utils";
+import { Screens } from '../src/utils';
 
 declare global {
   export type Nullable<T> = T | null;
@@ -7,7 +7,7 @@ declare global {
   export type Values<T extends Record<string, unknown>> = T[Keys<T>];
 
   export type Indexed = { [key: string]: any };
-  export type DispatchStateHandler<T> = (dispatch: Dispatch<AppState>, state: AppState, action: T) => Promise<void>
+  export type DispatchStateHandler<T> = (dispatch: Dispatch<AppState>, state: AppState, action: T) => Promise<void>;
 
   export type User = {
     id: number;
