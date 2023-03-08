@@ -1,52 +1,52 @@
 import * as search from 'assets/search.svg';
-import {withStore, withRouter} from 'utils';
-import {CoreRouter, Store, Block} from 'core';
-import {createChat} from "../../services/chatsService";
+import { withStore, withRouter } from 'utils';
+import { CoreRouter, Store, Block } from 'core';
+import { createChat } from '../../services/chatsService';
 
 type MessengerPageProps = {
-    router: CoreRouter;
-    store: Store<AppState>;
-    isLoading: boolean;
-    onToggleAppLoading?: () => void;
-    goToSettingsPage: (e: FocusEvent) => void;
-    user: User | null;
-    chats: ChatData[] | null;
-    userAvatar: () => string;
-    createChat: () => void;
-    isSelectedChat: () => void;
+  router: CoreRouter;
+  store: Store<AppState>;
+  isLoading: boolean;
+  onToggleAppLoading?: () => void;
+  goToSettingsPage: (e: FocusEvent) => void;
+  user: User | null;
+  chats: ChatData[] | null;
+  userAvatar: () => string;
+  createChat: () => void;
+  isSelectedChat: () => void;
 };
 
 export class MessengerPage extends Block<MessengerPageProps> {
-    constructor({...props}: MessengerPageProps) {
-        super({...props});
-        this.setProps({
-            user: this.props.store.getState().user,
-            chats: this.props.store.getState().chats,
-            isSelectedChat: () => this.props.store.getState().isSelectedChat,
-            userAvatar: () => `${process.env.API_ENDPOINT}/resources${this.props.user?.avatar}`,
-            createChat: () => this.createChat(),
-            goToSettingsPage: (e: FocusEvent) => this.goToSettingsPage(e),
-        });
-    }
+  constructor({ ...props }: MessengerPageProps) {
+    super({ ...props });
+    this.setProps({
+      user: this.props.store.getState().user,
+      chats: this.props.store.getState().chats,
+      isSelectedChat: () => this.props.store.getState().isSelectedChat,
+      userAvatar: () => `${process.env.API_ENDPOINT}/resources${this.props.user?.avatar}`,
+      createChat: () => this.createChat(),
+      goToSettingsPage: (e: FocusEvent) => this.goToSettingsPage(e),
+    });
+  }
 
-    goToSettingsPage(e: FocusEvent) {
-        e.preventDefault();
-        this.props.router.go('/settings');
-    }
+  goToSettingsPage(e: FocusEvent) {
+    e.preventDefault();
+    this.props.router.go('/settings');
+  }
 
-    async createChat() {
-        const chatName: string = (document.querySelector('[name=create_chat]') as HTMLInputElement).value as string;
-        await this.props.store.dispatch(createChat, {title: `${chatName}`});
-        setTimeout(() => {
-                this.setProps({
-                    chats: this.props.store.getState().chats
-                })
-        }, 0);
-    }
+  async createChat() {
+    const chatName: string = (document.querySelector('[name=create_chat]') as HTMLInputElement).value as string;
+    await this.props.store.dispatch(createChat, { title: `${chatName}` });
+    setTimeout(() => {
+      this.setProps({
+        chats: this.props.store.getState().chats,
+      });
+    }, 0);
+  }
 
-    render() {
-        // language=hbs
-        return `
+  render() {
+    // language=hbs
+    return `
             <main class="chat__wrapper">
                 <div class="chat__user-list">
                     {{{Link
@@ -96,7 +96,7 @@ export class MessengerPage extends Block<MessengerPageProps> {
                 {{/if}}
             </main>
         `;
-    }
+  }
 }
 
 export default withRouter(withStore(MessengerPage));

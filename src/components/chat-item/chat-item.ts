@@ -2,63 +2,64 @@ import Block from 'core/Block';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import * as emptyAvatar from 'assets/avatar.png';
-import {deleteUserChat, getChatUsers} from "../../services/chatsService";
+import { deleteUserChat, getChatUsers } from '../../services/chatsService';
 
 interface ChatItemProps {
-    title?: string;
-    avatar?: string;
-    unread_count?: number;
-    active?: boolean;
-    time?: string;
-    content?: string;
-    events?: unknown;
-    delChat: (e: FocusEvent) => void,
+  title?: string;
+  avatar?: string;
+  unread_count?: number;
+  active?: boolean;
+  time?: string;
+  content?: string;
+  events?: unknown;
+  delChat: (e: FocusEvent) => void,
 }
 
 export class ChatItem extends Block<ChatItemProps> {
-    static componentName = "ChatItem";
-    constructor({avatar, ...props}: ChatItemProps) {
-        super({avatar, ...props});
-        this.setProps({
-            delChat: (e) => this.delChat(e),
-            events: {
-                click: this.onClickChat
-            }
-        })
-    }
+  static componentName = 'ChatItem';
 
-    async delChat(e: FocusEvent) {
-        console.log('Click on removeChat');
-        e.preventDefault();
-        e.stopPropagation();
-        const chat = (e.target as HTMLButtonElement).closest('.chat') as HTMLElement;
-        if (chat.dataset.id) {
-            const id = parseInt(chat.dataset.id);
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
-            await deleteUserChat(() => {
-            }, {} as AppState, {chatId: id, item: chat});
-        }
-        return;
-    }
+  constructor({ avatar, ...props }: ChatItemProps) {
+    super({ avatar, ...props });
+    this.setProps({
+      delChat: (e) => this.delChat(e),
+      events: {
+        click: this.onClickChat,
+      },
+    });
+  }
 
-    async onClickChat(e: FocusEvent) {
-        console.log('Click on onClickChat')
-        const chatItem: HTMLElement | null = (e.target as HTMLElement).closest('.chat');
-        if (chatItem) {
-            const id = chatItem.dataset.id;
-            await window.store.dispatch(getChatUsers, id);
-            const chats = window.store.getState().chats;
-            window.store.set({'activeChat': id});
-            chats?.map((chat) => {
-                chat.active = chat.id === parseInt(`${id}`);
-                return chat;
-            })
-        }
+  async delChat(e: FocusEvent) {
+    console.log('Click on removeChat');
+    e.preventDefault();
+    e.stopPropagation();
+    const chat = (e.target as HTMLButtonElement).closest('.chat') as HTMLElement;
+    if (chat.dataset.id) {
+      const id = parseInt(chat.dataset.id, 10);
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      await deleteUserChat(() => {
+      }, {} as AppState, { chatId: id, item: chat });
     }
+    return;
+  }
 
-    protected render(): string {
-        // language=hbs
-        return `
+  async onClickChat(e: FocusEvent) {
+    console.log('Click on onClickChat');
+    const chatItem: HTMLElement | null = (e.target as HTMLElement).closest('.chat');
+    if (chatItem) {
+      const id = chatItem.dataset.id;
+      await window.store.dispatch(getChatUsers, id);
+      const chats = window.store.getState().chats;
+      window.store.set({ activeChat: id });
+      chats?.map((chat) => {
+        chat.active = chat.id === parseInt(`${id}`, 10);
+        return chat;
+      });
+    }
+  }
+
+  protected render(): string {
+    // language=hbs
+    return `
             <div class="chat" data-id="{{id}}">
                 {{{Button
                         text="-"
@@ -86,5 +87,5 @@ export class ChatItem extends Block<ChatItemProps> {
                 <div class="chat__separator"></div>
             </div>
         `;
-    }
+  }
 }

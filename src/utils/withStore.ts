@@ -19,7 +19,7 @@ export function withStore<P extends WithStateProps>(WrappedBlock: BlockClass<P>)
        */
       // @ts-expect-error this is not typed
       this.setProps({ ...this.props, store: window.store });
-    }
+    };
 
     componentDidMount(props: P) {
       super.componentDidMount(props);
@@ -30,6 +30,5 @@ export function withStore<P extends WithStateProps>(WrappedBlock: BlockClass<P>)
       super.componentWillUnmount();
       window.store.off('changed', this.__onChangeStoreCallback);
     }
-
   } as BlockClass<Omit<P, 'store'>>;
 }

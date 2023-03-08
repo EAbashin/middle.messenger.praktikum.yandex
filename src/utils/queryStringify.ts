@@ -4,7 +4,7 @@ type Primitive = string | boolean | number;
 
 function queryStringify(data: StringIndexed): string | never {
   if (typeof data !== 'object') {
-    throw new Error("input must be an object");
+    throw new Error('input must be an object');
   }
 
   let query = '';
@@ -13,11 +13,9 @@ function queryStringify(data: StringIndexed): string | never {
   for (const key in data) {
     if (Array.isArray(data[key])) {
       query += stringifyArray(key, data[key]);
-    }
-    else if (typeof data[key] === 'object') {
+    } else if (typeof data[key] === 'object') {
       query += stringifyObject(key, data[key]);
-    }
-    else {
+    } else {
       query += stringifyPrimitive(key, data[key]);
     }
 
@@ -60,11 +58,9 @@ function stringifyObject(key: string, object: StringIndexed): string {
     const fullKey = `${key}[${label}]`;
     if (Array.isArray(object[label])) {
       string += stringifyArray(fullKey, object[label]);
-    }
-    else if (typeof object[label] === 'object') {
+    } else if (typeof object[label] === 'object') {
       string += stringifyObject(fullKey, object[label]);
-    }
-    else {
+    } else {
       string += `${fullKey}=${object[label]}`;
     }
 

@@ -1,4 +1,4 @@
-import Fetch from "../core/Fetch";
+import Fetch from '../core/Fetch';
 
 interface CreateChatProps {
   title: string,
@@ -6,39 +6,39 @@ interface CreateChatProps {
 
 export const chatsAPI = {
   getChats(): Promise<XMLHttpRequest> {
-    return Fetch.get(`chats`, {});
+    return Fetch.get('chats', {});
   },
   createChat(data: CreateChatProps): Promise<XMLHttpRequest> {
-    return Fetch.post(`chats`, {
+    return Fetch.post('chats', {
       data: JSON.stringify(data),
-      headers: {'Content-Type': 'application/json'}
+      headers: { 'Content-Type': 'application/json' },
     });
   },
   deleteChat(data: string): Promise<XMLHttpRequest> {
-    return Fetch.delete(`chats`, {
-      data: data,
-      headers: {'Content-Type': 'application/json'}
-    })
+    return Fetch.delete('chats', {
+      data,
+      headers: { 'Content-Type': 'application/json' },
+    });
   },
   getChatUsers(chatID: string): Promise<XMLHttpRequest> {
     return Fetch.post(`chats/token/${chatID}`, {});
   },
   addUsersToChat(data: { chatId: number | string, userId: number | string }): Promise<XMLHttpRequest> {
-    return Fetch.put(`chats/users`, {
+    return Fetch.put('chats/users', {
       data: JSON.stringify({
-        "users": [data.userId],
-        "chatId": data.chatId
+        users: [data.userId],
+        chatId: data.chatId,
       }),
-      headers: {'Content-Type': 'application/json'}
-    })
+      headers: { 'Content-Type': 'application/json' },
+    });
   },
   deleteUsersFromChat(data: { chatId: number | string, userId: number | string }): Promise<XMLHttpRequest> {
-    return Fetch.delete(`chats/users`, {
+    return Fetch.delete('chats/users', {
       data: JSON.stringify({
-        "users": [data.userId],
-        "chatId": data.chatId
+        users: [data.userId],
+        chatId: data.chatId,
       }),
-      headers: {'Content-Type': 'application/json'}
-    })
-  }
-}
+      headers: { 'Content-Type': 'application/json' },
+    });
+  },
+};

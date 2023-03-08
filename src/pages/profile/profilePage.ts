@@ -2,50 +2,50 @@ import Block from 'core/Block';
 import * as back from 'assets/back.png';
 import * as avatar from 'assets/avatar.png';
 import * as editImage from 'assets/edit-image.png';
-import {withRouter, withStore} from "../../utils";
-import {CoreRouter, Store} from "../../core";
-import {logout} from "../../services/authService";
+import { withRouter, withStore } from '../../utils';
+import { CoreRouter, Store } from '../../core';
+import { logout } from '../../services/authService';
 
 type ProfilePageProps = {
-    router: CoreRouter;
-    store: Store<AppState>;
-    avatar: () => void;
-    onClick: () => void;
-    backToMain: () => void;
-    toPassword: () => void;
-    toData: () => void;
+  router: CoreRouter;
+  store: Store<AppState>;
+  avatar: () => void;
+  onClick: () => void;
+  backToMain: () => void;
+  toPassword: () => void;
+  toData: () => void;
 };
 
 export class ProfilePage extends Block<ProfilePageProps> {
-    constructor(props: ProfilePageProps) {
-        super(props);
-        this.setProps({
-            onClick: () => this.logout(),
-            backToMain: () => this.toMain(),
-            toPassword: () => this.toPassword(),
-            toData: () => this.toData(),
-        })
-    }
+  constructor(props: ProfilePageProps) {
+    super(props);
+    this.setProps({
+      onClick: () => this.logout(),
+      backToMain: () => this.toMain(),
+      toPassword: () => this.toPassword(),
+      toData: () => this.toData(),
+    });
+  }
 
-    logout() {
-        this.props.store.dispatch(logout);
-    }
+  logout() {
+    this.props.store.dispatch(logout);
+  }
 
-    toMain() {
-        this.props.router.go('/messenger');
-    }
+  toMain() {
+    this.props.router.go('/messenger');
+  }
 
-    toPassword() {
-        this.props.router.go('/change-password');
-    }
+  toPassword() {
+    this.props.router.go('/change-password');
+  }
 
-    toData() {
-        this.props.router.go('/settings');
-    }
+  toData() {
+    this.props.router.go('/settings');
+  }
 
-    render() {
-        // language=hbs
-        return `
+  render() {
+    // language=hbs
+    return `
             <main class="profile__wrapper">
                 <div class="profile__back">
                     <a class="profile__back_btn" href="./chat"><img src=${back} alt="Back"></a>
@@ -99,7 +99,7 @@ export class ProfilePage extends Block<ProfilePageProps> {
                 </div>
             </main>
         `;
-    }
+  }
 }
 
 export default withRouter(withStore(ProfilePage));

@@ -1,4 +1,4 @@
-
+// eslint-disable-next-line import/prefer-default-export
 export const defaultState: AppState = {
   appIsInited: false,
   screen: null,
@@ -7,5 +7,5 @@ export const defaultState: AppState = {
   chats: null,
   isSelectedChat: false,
   activeChat: null,
-  messages: null
+  messages: null,
 };
